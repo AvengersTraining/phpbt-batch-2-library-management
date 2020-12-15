@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = [
-        'email_verified'
+        'email_verified',
     ];
 
     /**
@@ -57,11 +57,11 @@ class User extends Authenticatable
      */
     public function createdBookUser()
     {
-        return $this->HasMany(Book::class, 'user_book', 'admin_id_create');
+        return $this->hasMany(Book::class, 'user_book', 'admin_id_create');
     }
 
     public function returnedBookUser()
     {
-        return $this->HasMany(Book::class, 'user_book', 'admin_id_return');
+        return $this->hasMany(Book::class, 'user_book', 'admin_id_return');
     }
 }
