@@ -4,22 +4,24 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\App;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    protected $guarded = [
+        'email_verified'
     ];
 
     /**
@@ -40,4 +42,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class,);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    /**
+     * If user is admin, get created orders
+     * @return HasMany
+     */
+    public function createdOrders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'created_by_admin_id', 'id');
+    }
+
+    /**
+     * If user is admin, get returned orders
+     * @return HasMany
+     */
+    public function returnedOrders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'returned_by_admin_id', 'id');
+    }
 }
