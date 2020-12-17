@@ -22,7 +22,8 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'book_title_id' => $this->faker->randomNumber(),
+            'is_available' => $this->faker->randomElement(['0', '1']),
         ];
     }
 }
