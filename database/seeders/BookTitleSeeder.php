@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Genre;
 use Illuminate\Database\Seeder;
 use App\Models\BookTitle;
 use App\Models\Book;
@@ -15,9 +16,11 @@ class BookTitleSeeder extends Seeder
      */
     public function run()
     {
-        BookTitle::factory()
-            ->count(10)
-            ->has(Book::factory()->count(3))
-            ->create();
+        Genre::all()->each(function ($genre) {
+            $createdBookTitles = BookTitle::factory()
+                ->count(3)
+                ->create();
+            $genre->bookTitles()->attach($createdBookTitles);
+        });
     }
 }

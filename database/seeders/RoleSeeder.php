@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Role;
+use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
 {
@@ -14,10 +14,16 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(
-            ['role_name' => 'Ban user'],
-            ['role_name' => 'Normal user'],
-            ['role_name' => 'Admin'],
+        if (Role::exists()) {
+            return;
+        }
+
+        Role::insert(
+            [
+                ['role_name' => 'Banned user'],
+                ['role_name' => 'Normal user'],
+                ['role_name' => 'Admin'],
+            ]
         );
     }
 }
