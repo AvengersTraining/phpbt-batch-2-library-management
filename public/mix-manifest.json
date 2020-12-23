@@ -1,0 +1,23 @@
+{
+    "/css/admin/app.css": "/css/admin/app.css",
+    "/js/admin/jquery.min.js": "/js/admin/jquery.min.js",
+    "/js/admin/bootstrap.bundle.min.js": "/js/admin/bootstrap.bundle.min.js",
+    "/js/admin/select2.full.min.js": "/js/admin/select2.full.min.js",
+    "/js/admin/jquery.bootstrap-duallistbox.min.js": "/js/admin/jquery.bootstrap-duallistbox.min.js",
+    "/js/admin/moment.min.js": "/js/admin/moment.min.js",
+    "/js/admin/jquery.inputmask.min.js": "/js/admin/jquery.inputmask.min.js",
+    "/js/admin/daterangepicker.js": "/js/admin/daterangepicker.js",
+    "/js/admin/bootstrap-colorpicker.min.js": "/js/admin/bootstrap-colorpicker.min.js",
+    "/js/admin/tempusdominus-bootstrap-4.min.js": "/js/admin/tempusdominus-bootstrap-4.min.js",
+    "/js/admin/bootstrap-switch.min.js": "/js/admin/bootstrap-switch.min.js",
+    "/js/admin/adminlte.min.js": "/js/admin/adminlte.min.js",
+    "/css/admin/all.min.css": "/css/admin/all.min.css",
+    "/css/admin/daterangepicker.css": "/css/admin/daterangepicker.css",
+    "/css/admin/icheck-bootstrap.min.css": "/css/admin/icheck-bootstrap.min.css",
+    "/css/admin/bootstrap-colorpicker.min.css": "/css/admin/bootstrap-colorpicker.min.css",
+    "/css/admin/tempusdominus-bootstrap-4.min.css": "/css/admin/tempusdominus-bootstrap-4.min.css",
+    "/css/admin/select2.min.css": "/css/admin/select2.min.css",
+    "/css/admin/select2-bootstrap4.min.css": "/css/admin/select2-bootstrap4.min.css",
+    "/css/admin/bootstrap-duallistbox.min.css": "/css/admin/bootstrap-duallistbox.min.css",
+    "/css/admin/adminlte.min.css": "/css/admin/adminlte.min.css"
+}
