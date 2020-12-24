@@ -10,6 +10,10 @@ class Role extends Model
 {
     use HasFactory;
 
+    const ADMIN = 3;
+    const NORMAL = 2;
+    const BANNED = 1;
+
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
