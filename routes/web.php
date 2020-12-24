@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,11 +20,17 @@ Route::prefix('admin')->group(function () {
     })->name('admin');
 });
 
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 // temp routes for users
 Route::get('/', function () {
     return view('user.pages.home');
 });
+Route::get('home', function () {
+    return view('user.pages.home');
+})->name('home');
 
 Route::get('book-detail', function () {
     return view('user.pages.book_detail');

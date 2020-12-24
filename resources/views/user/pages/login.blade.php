@@ -31,8 +31,9 @@
                                 <article class="page type-page status-publish hentry">
                                     <div class="entry-content">
                                         <div class="woocommerce">
-                                            <form action="/users/login" class="checkout woocommerce-checkout" method="post"
+                                            <form action="{{ route('auth.login') }}" class="checkout woocommerce-checkout" method="post"
                                                 name="checkout">
+                                                @csrf
                                                 <div class="row">
                                                     <div id="customer_details">
                                                         <div class="col-xs-12">
@@ -46,7 +47,7 @@
                                                                             <p id="billing_company_field"
                                                                                 class="form-row form-row form-row-wide">
                                                                                 <input type="email"
-                                                                                    value="youremail@gmail.com" id="email"
+                                                                                    placeholder="Your email" id="email"
                                                                                     name="email" class="input-text">
                                                                             </p>
                                                                         </div>
@@ -54,15 +55,14 @@
                                                                             <label for="">Password</label>
                                                                             <p id="billing_company_field"
                                                                                 class="form-row form-row form-row-wide">
-                                                                                <input type="text" placeholder="Password"
-                                                                                    value="" id="password" name="password"
+                                                                                <input type="password" placeholder="Password" id="password" name="password"
                                                                                     class="input-text">
                                                                             </p>
                                                                         </div>
 
                                                                         <div class="col-xs-12 col-sm-12">
-                                                                            <input type="checkbox" id="remmeber-me"
-                                                                                name="remmeber-me" class="input-text">
+                                                                            <input type="checkbox" id="remember_me"
+                                                                                name="remember_me" class="input-text">
 
                                                                             <label for="">Remember me</label>
                                                                         </div>
@@ -70,7 +70,7 @@
 
                                                                         <div class="col-xs-12 col-sm-12">
                                                                             <input type="submit" class="btn btn-default"
-                                                                                name="Login" value="Update">
+                                                                                name="Login" value="Login">
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -88,6 +88,10 @@ mix.copy(
     .copy(
         "node_modules/admin-lte/dist/css/adminlte.min.css",
         "public/css/admin"
+    )
+    .copy(
+        "node_modules/admin-lte/plugins/summernote/summernote-bs4.min.css",
+        "public/css/admin"
     );
 
 mix.copy(

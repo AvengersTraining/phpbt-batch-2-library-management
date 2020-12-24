@@ -29,7 +29,11 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="topbar-links">
-                                        <a href="/login"><i class="fa fa-lock"></i>Login / Register</a>
+                                        @if(Auth::check())
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                            Welcome, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}!
+                                            </a>
+                                        @endif
                                         <span>|</span>
                                         <div class="header-cart dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -97,32 +101,20 @@
                                 <li class="dropdown {{ request()->is('/') || request()->is('home') ? 'active' : '' }}">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/">Home</a>
                                 </li>
-                                {{-- <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle disabled"
-                                        href="books-media-list-view.html">Books &amp; Media</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="books-media-list-view.html">Books &amp; Media List View</a>
-                                        </li>
-                                        <li><a href="books-media-gird-view-v1.html">Books &amp; Media Grid View
-                                                V1</a></li>
-                                        <li><a href="books-media-gird-view-v2.html">Books &amp; Media Grid View
-                                                V2</a></li>
-                                        <li><a href="books-media-detail-v1.html">Books &amp; Media Detail V1</a>
-                                        </li>
-                                        <li><a href="books-media-detail-v2.html">Books &amp; Media Detail V2</a>
-                                        </li>
-                                    </ul>
-                                </li> --}}
-                                <li class="dropdown {{ request()->is('account/*') ? 'active' : '' }}">
-                                    <a data-toggle="dropdown" class="dropdown-toggle disabled"
-                                        href="/account/profile">Account</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="/account/history">Activities</a> </li>
-                                        <li><a href="/account/profile">Profile</a></li>
-                                        <li><a href="/account/password">Change password</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">Logout</a></li>
+                                @if (Auth::check())
+                                    <li class="dropdown {{ request()->is('account/*') ? 'active' : '' }}">
+                                        <a data-toggle="dropdown" class="dropdown-toggle disabled"
+                                            href="/account/profile">Account</a>
+    {{--                                    <ul class="dropdown-menu">--}}
+    {{--                                        <li><a href="/account/history">Activities</a> </li>--}}
+    {{--                                        <li><a href="/account/profile">Profile</a></li>--}}
+    {{--                                        <li><a href="/account/password">Change password</a></li>--}}
+    {{--                                    </ul>--}}
+                                    </li>
+                                    <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+                                @else
+                                    <li><a href="/login">Login</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>

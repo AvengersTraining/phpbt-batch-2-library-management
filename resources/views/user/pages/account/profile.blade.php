@@ -32,48 +32,6 @@
                                         <div class="woocommerce">
                                             <form action="/users/123" class="checkout woocommerce-checkout" method="post"
                                                 name="checkout">
-                                                {{-- <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <h2>Contact Information</h2>
-                                                        <span class="underline left"></span>
-                                                        <div class="woocommerce-info">
-                                                            <div class="col-sm-7">
-                                                                <p class="input-required">
-                                                                    <label>
-                                                                        <span class="first-letter">Email Address</span>
-                                                                        <span class="second-letter">*</span>
-                                                                    </label>
-                                                                    <input type="text" value="" class="input-text">
-                                                                </p>
-                                                                <p class="input-required">
-                                                                    <label>
-                                                                        <span class="first-letter">Password</span>
-                                                                        <span class="second-letter">*</span>
-                                                                    </label>
-                                                                    <input type="password" value="" class="input-text">
-                                                                </p>
-                                                                <input type="submit" class="btn btn-default" name="Login"
-                                                                    value="Login">
-                                                            </div>
-                                                            <div class="col-sm-5">
-                                                                <h3>Create New Account</h3>
-                                                                <div class="radio">
-                                                                    <input id="register" type="radio" value="register"
-                                                                        name="register">
-                                                                    <label for="register">Register and Checkout</label>
-                                                                    <h3>Checkout as Guest</h3>
-                                                                    <input id="checkout" type="radio" value="checkout"
-                                                                        name="register">
-                                                                    <label for="checkout">Checkout without
-                                                                        registration</label>
-                                                                </div>
-                                                                <input type="submit" class="btn btn-default" name="continue"
-                                                                    value="Continue">
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
                                                 <div class="row">
                                                     <div id="customer_details">
                                                         <div class="col-xs-12">
@@ -87,25 +45,16 @@
                                                                             <p id="billing_company_field"
                                                                                 class="form-row form-row form-row-wide">
                                                                                 <input type="email"
-                                                                                    value="youremail@gmail.com" id="email"
+                                                                                    value="{{Auth::user()->email}}" id="email"
                                                                                     name="email" class="input-text"
                                                                                     disabled>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-xs-12 col-sm-12">
-                                                                            <label for="">Username</label>
-                                                                            <p id="billing_company_field"
-                                                                                class="form-row form-row form-row-wide">
-                                                                                <input type="text" value="username"
-                                                                                    id="username" name="username"
-                                                                                    class="input-text" disabled>
                                                                             </p>
                                                                         </div>
                                                                         <div class="col-xs-12 col-sm-12">
                                                                             <label for="">Citizen Indentification</label>
                                                                             <p id="billing_company_field"
                                                                                 class="form-row form-row form-row-wide">
-                                                                                <input type="text" value="033200001234"
+                                                                                <input type="text" value="{{Auth::user()->citizen_id}}"
                                                                                     id="citizen_id" name="citizen_id"
                                                                                     class="input-text" disabled>
                                                                             </p>
@@ -114,18 +63,18 @@
                                                                             <label for="">Phone</label>
                                                                             <p id="billing_company_field"
                                                                                 class="form-row form-row form-row-wide">
-                                                                                <input type="text" value="0378383456"
+                                                                                <input type="text" value="{{Auth::user()->phone}}"
                                                                                     id="phone" name="phone"
-                                                                                    class="input-text" disabled>
+                                                                                    class="input-text">
                                                                             </p>
                                                                         </div>
                                                                         <div class="col-xs-12 col-sm-6">
                                                                             <label for="">First name</label>
                                                                             <p id="billing_first_name_field"
                                                                                 class="form-row form-row form-row-first">
-                                                                                <input type="text" value=""
+                                                                                <input type="text"
                                                                                     autocomplete="given-name"
-                                                                                    placeholder="First Name" id="first_name"
+                                                                                    value="{{Auth::user()->first_name}}" id="first_name"
                                                                                     name="first_name" class="input-text">
                                                                             </p>
                                                                         </div>
@@ -133,9 +82,9 @@
                                                                             <label for="">Last name</label>
                                                                             <p id="billing_last_name_field"
                                                                                 class="form-row form-row form-row-last validate-required">
-                                                                                <input type="text" value=""
+                                                                                <input type="text"
                                                                                     autocomplete="family-name"
-                                                                                    placeholder="Last Name" id="last_name"
+                                                                                    value="{{Auth::user()->last_name}}" id="last_name"
                                                                                     name="last_name" class="input-text">
                                                                             </p>
                                                                         </div>
@@ -145,14 +94,13 @@
                                                                             <label for="">Address</label>
                                                                             <p id="billing_address_1_field"
                                                                                 class="form-row form-row form-row-wide address-field validate-required">
-                                                                                <input type="text" value=""
-                                                                                    placeholder="Address" name="address"
+                                                                                <input type="text" value="{{Auth::user()->address}}" name="address"
                                                                                     class="input-text">
                                                                             </p>
                                                                         </div>
                                                                         <div class="col-xs-12 col-sm-12">
                                                                             <input type="submit" class="btn btn-default"
-                                                                                name="Login" value="Update">
+                                                                                name="Update" value="Update">
                                                                         </div>
                                                                     </div>
                                                                 </div>

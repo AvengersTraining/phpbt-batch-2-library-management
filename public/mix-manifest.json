@@ -19,5 +19,6 @@
     "/css/admin/select2.min.css": "/css/admin/select2.min.css",
     "/css/admin/select2-bootstrap4.min.css": "/css/admin/select2-bootstrap4.min.css",
     "/css/admin/bootstrap-duallistbox.min.css": "/css/admin/bootstrap-duallistbox.min.css",
-    "/css/admin/adminlte.min.css": "/css/admin/adminlte.min.css"
+    "/css/admin/adminlte.min.css": "/css/admin/adminlte.min.css",
+    "/css/admin/summernote-bs4.min.css": "/css/admin/summernote-bs4.min.css"
 }
