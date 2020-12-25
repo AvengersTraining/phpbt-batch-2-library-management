@@ -29,7 +29,11 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="topbar-links">
-                                        <a href="/login"><i class="fa fa-lock"></i>Login / Register</a>
+                                        @auth
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                {{ __('app.welcome', ['name' => Auth::user()->first_name." ".Auth::user()->last_name ]) }}
+                                            </a>
+                                        @endauth
                                         <span>|</span>
                                         <div class="header-cart dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -40,7 +44,7 @@
                                                 <ul>
                                                     <li class="clearfix">
                                                         <img src="{{ asset('user/images/header-cart-image-01.jpg') }}"
-                                                            alt="cart item" />
+                                                             alt="cart item" />
                                                         <div class="item-info">
                                                             <div class="name">
                                                                 <a href="#">The Great Gatsby</a>
@@ -53,7 +57,7 @@
                                                     </li>
                                                     <li class="clearfix">
                                                         <img src="{{ asset('user/images/header-cart-image-02.jpg') }}"
-                                                            alt="cart item" />
+                                                             alt="cart item" />
                                                         <div class="item-info">
                                                             <div class="name">
                                                                 <a href="#">The Great Gatsby</a>
@@ -66,7 +70,7 @@
                                                     </li>
                                                     <li class="clearfix">
                                                         <img src="{{ asset('user/images/header-cart-image-03.jpg') }}"
-                                                            alt="cart item" />
+                                                             alt="cart item" />
                                                         <div class="item-info">
                                                             <div class="name">
                                                                 <a href="#">The Great Gatsby</a>
@@ -95,34 +99,17 @@
                         <div class="navbar-collapse hidden-sm hidden-xs">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown {{ request()->is('/') || request()->is('home') ? 'active' : '' }}">
-                                    <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/">Home</a>
+                                    <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/">{{ __('app.home') }}</a>
                                 </li>
-                                {{-- <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle disabled"
-                                        href="books-media-list-view.html">Books &amp; Media</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="books-media-list-view.html">Books &amp; Media List View</a>
-                                        </li>
-                                        <li><a href="books-media-gird-view-v1.html">Books &amp; Media Grid View
-                                                V1</a></li>
-                                        <li><a href="books-media-gird-view-v2.html">Books &amp; Media Grid View
-                                                V2</a></li>
-                                        <li><a href="books-media-detail-v1.html">Books &amp; Media Detail V1</a>
-                                        </li>
-                                        <li><a href="books-media-detail-v2.html">Books &amp; Media Detail V2</a>
-                                        </li>
-                                    </ul>
-                                </li> --}}
-                                <li class="dropdown {{ request()->is('account/*') ? 'active' : '' }}">
-                                    <a data-toggle="dropdown" class="dropdown-toggle disabled"
-                                        href="/account/profile">Account</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="/account/history">Activities</a> </li>
-                                        <li><a href="/account/profile">Profile</a></li>
-                                        <li><a href="/account/password">Change password</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">Logout</a></li>
+                                @auth
+                                    <li class="dropdown {{ request()->is('account/*') ? 'active' : '' }}">
+                                        <a data-toggle="dropdown" class="dropdown-toggle disabled"
+                                           href="{{ route('user.profile') }}">{{ __('app.account') }}</a>
+                                    </li>
+                                    <li><a href="{{ route('auth.logout') }}">{{ __('app.logout') }}</a></li>
+                                @else
+                                    <li><a href="{{ route('auth.index') }}">{{ __('app.login') }}</a></li>
+                                @endauth
                             </ul>
                         </div>
                     </div>
