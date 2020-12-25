@@ -20,6 +20,7 @@ Route::prefix('admin')->group(function () {
         return view('admin.index');
     })->name('admin');
     Route::resource('books', BookController::class)->except('show');
+    Route::get('/genres', [\App\Http\Controllers\GenreController::class, 'index'])->name('admin.genres');
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('auth.index');
@@ -35,7 +36,7 @@ Route::get('book-detail', function () {
     return view('user.pages.book_detail');
 });
 Route::prefix('account')->group(function () {
-    Route::get('/history', function () {
+    Route::get('history', function () {
         return view('user.pages.account.history');
     });
 
