@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +19,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin');
+    Route::get('/book/list', [BookController::class, 'list'])->name('admin.book.list');
+    Route::get('/book/search', [BookController::class, 'search'])->name('admin.book.search');
+    Route::get('/book/add', [BookController::class, 'add'])->name('admin.book.add');
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('auth.index');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
+
 
 // temp routes for users
 Route::get('/', function () {

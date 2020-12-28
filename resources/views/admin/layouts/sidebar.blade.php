@@ -30,43 +30,35 @@
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-book-reader"></i>
-                        <p>
-                            {{ __('manage genre') }}
-                        </p>
-                        <i class="right fas fa-angle-left"></i>
+                        <p>{{ __('manage genre') }}</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <i class="far fa-circle nav-icon"></i>
-                            <a href="{{ route('auth.logout') }}" class="nav-link">
-                                <p>{{ __('book.add') }}</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <i class="far fa-circle nav-icon"></i>
-                            <a href="{{ route('auth.logout') }}" class="nav-link">
-                                <p>{{ __('book.list') }}</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            {{ __('manage title') }}
-                        </p>
+                        <p>{{ __('manage title') }}</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book-open"></i>
-                        <p>
-                            {{ __('manage book') }}
-                        </p>
+                        <p>{{ __('manage book') }}</p>
+                        <i class="fas fa-angle-left right"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ route('admin.book.list') }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>{{ __('manage_book.list') }}</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('admin.book.add') }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>{{ __('manage_book.add') }}</p>
+                        </a>
+                      </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
