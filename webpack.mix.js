@@ -51,7 +51,19 @@ mix.copy(
         "node_modules/admin-lte/plugins/bootstrap-switch/js/bootstrap-switch.min.js",
         "public/js/admin"
     )
-    .copy("node_modules/admin-lte/dist/js/adminlte.min.js", "public/js/admin");
+    .copy("node_modules/admin-lte/dist/js/adminlte.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-buttons/js/dataTables.buttons.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/jszip/jszip.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/pdfmake/pdfmake.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/pdfmake/vfs_fonts.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.print.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js", "public/js/admin"),
 
 mix.copy(
     "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
