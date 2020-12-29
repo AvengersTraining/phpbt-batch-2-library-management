@@ -67,7 +67,7 @@
                                                                             <input type="checkbox" id="remember_me"
                                                                                    name="remember_me" class="input-text">
 
-                                                                            <label for="">{{ __('remember me') }}</label>
+                                                                            <label for="">{{ __('app.remember_me') }}</label>
                                                                         </div>
                                                                         <div class="clear"></div>
 

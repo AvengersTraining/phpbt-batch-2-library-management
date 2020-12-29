@@ -26,53 +26,45 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">{{ __('list function') }}</li>
+                <li class="nav-header">{{ __('app.list_function') }}</li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-book-reader"></i>
-                        <p>
-                            {{ __('manage genre') }}
-                        </p>
-                        <i class="right fas fa-angle-left"></i>
+                        <p>{{ __('app.manage_genre') }}</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <i class="far fa-circle nav-icon"></i>
-                            <a href="{{ route('auth.logout') }}" class="nav-link">
-                                <p>{{ __('book.add') }}</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <i class="far fa-circle nav-icon"></i>
-                            <a href="{{ route('auth.logout') }}" class="nav-link">
-                                <p>{{ __('book.list') }}</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            {{ __('manage title') }}
-                        </p>
+                        <p>{{ __('app.manage_title') }}</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book-open"></i>
-                        <p>
-                            {{ __('manage book') }}
-                        </p>
+                        <p>{{ __('app.manage_book') }}</p>
+                        <i class="fas fa-angle-left right"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ route('books.index') }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>{{ __('manage_book.list') }}</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('books.create') }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>{{ __('manage_book.add') }}</p>
+                        </a>
+                      </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-head-side-mask"></i>
                         <p>
-                            {{ __('manage user') }}
+                            {{ __('app.manage_user') }}
                         </p>
                     </a>
                 </li>
@@ -80,7 +72,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-history"></i>
                         <p>
-                            {{ __('manage history') }}
+                            {{ __('app.manage_history') }}
                         </p>
                     </a>
                 </li>
@@ -88,7 +80,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            {{ __('register borrow') }}
+                            {{ __('app.register_borrow') }}
                         </p>
                     </a>
                 </li>
