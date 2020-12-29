@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
@@ -16,17 +15,19 @@ use App\Http\Controllers\BookController;
 */
 
 // admin routes
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'is.admin'])->name('admin.')->group(function () {
     Route::get('/', function () {
-        return view('admin.index');
+        return redirect()->route('admin.genres.index');
     })->name('index');
-    Route::resource('books', BookController::class)->except('show');
+    Route::resource('books', BookController::class)->except([
+        'show', 'create',
+    ]);
     Route::resource('genres', GenreController::class)->except('show');
 });
 
-Route::get('login', [AuthController::class, 'index'])->name('auth.index');
-Route::post('login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::get('login', [AuthController::class, 'index'])->name('index');
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // temp routes for users
@@ -36,7 +37,7 @@ Route::get('/', function () {
 Route::get('book-detail', function () {
     return view('user.pages.book_detail');
 });
-Route::prefix('account')->group(function () {
+Route::prefix('account')->middleware('auth')->group(function () {
     Route::get('history', function () {
         return view('user.pages.account.history');
     });

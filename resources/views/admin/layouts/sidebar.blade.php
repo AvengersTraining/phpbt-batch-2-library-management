@@ -19,9 +19,10 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('auth.logout') }}" class="nav-link">
-                                <p>{{ __('app.logout') }}</p>
-                            </a>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-link">{{ __('app.logout') }}</button>
+                            </form>
                         </li>
                     </ul>
                 </li>
@@ -50,12 +51,6 @@
                         <a href="{{ route('admin.books.index') }}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>{{ __('manage_book.list') }}</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{ route('admin.books.create') }}" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>{{ __('manage_book.add') }}</p>
                         </a>
                       </li>
                     </ul>

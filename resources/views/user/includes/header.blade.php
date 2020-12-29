@@ -106,9 +106,16 @@
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled"
                                            href="{{ route('user.profile') }}">{{ __('app.account') }}</a>
                                     </li>
-                                    <li><a href="{{ route('auth.logout') }}">{{ __('app.logout') }}</a></li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link" style="font-size: 14px; padding: 0; text-transform: uppercase;">
+                                                {{ __('app.logout') }}
+                                            </button>
+                                        </form>
+                                    </li>
                                 @else
-                                    <li><a href="{{ route('auth.index') }}">{{ __('app.login') }}</a></li>
+                                    <li><a href="{{ route('index') }}">{{ __('app.login') }}</a></li>
                                 @endauth
                             </ul>
                         </div>

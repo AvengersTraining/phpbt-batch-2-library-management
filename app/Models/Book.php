@@ -11,6 +11,9 @@ class Book extends Model
 {
     use HasFactory;
 
+    const AVAILABLE = 1;
+    const UNVAILABLE = 0;
+
     public function bookTitle(): BelongsTo
     {
         return $this->belongsTo(BookTitle::class);

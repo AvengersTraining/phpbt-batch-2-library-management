@@ -21,4 +21,6 @@ return [
     'manage_history' => 'Manage borrow history',
     'register_borrow' => 'Register borrow',
     'invalid_email' => 'The provided credentials do not match our records.',
+    'unauthorized' => 'Unauthorized',
+    'admin' => 'Admin',
 ];

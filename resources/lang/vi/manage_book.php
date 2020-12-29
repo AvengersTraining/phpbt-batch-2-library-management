@@ -13,5 +13,10 @@ return [
     'delete' => 'Xóa',
     'available' => 'Có sẵn',
     'unavailable' => 'Không có sẵn',
-    'delete_success' => 'Xóa thành công',
+    'delete_success' => 'Xóa sách thành công!',
+    'number' => 'Số lượng',
+    'add_success' => 'Thêm sách thành công!',
+    'find' => 'Tìm kiếm cuốn sách',
+    'title_id' => 'Title ID',
+    'no_title' => 'Mã tên sách không tồn tại!',
 ];
