@@ -75,7 +75,7 @@ class BookController extends Controller
         Book::findOrFail($id)->delete();
 
         return redirect()
-            ->route('books.index')
+            ->route('admin.books.index')
             ->with('status', __('manage_book.delete_success'));
     }
 

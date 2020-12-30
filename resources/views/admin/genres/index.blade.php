@@ -7,6 +7,11 @@
 @section('content')
     <div class="row">
         <div class="col-12">
+            @if (session('message'))
+                <div class="alert alert-default-success text-center">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{{__('genres.all_genres')}}</h3>
@@ -44,11 +49,20 @@
                                 <td>{{$genre->name}}</td>
                                 <td>{{$genre->description}}</td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-sm btn-outline-info">{{__('genres.view')}}</button>
-                                        <button class="btn btn-sm btn-primary">{{__('genres.edit')}}</button>
-                                        <button class="btn btn-sm btn-danger">{{__('genres.delete')}}</button>
-                                    </div>
+                                    <form method="post"
+                                          action="{{ route('admin.genres.destroy', ['genre' => $genre->id]) }}">
+                                        <div class="btn-group">
+                                            <button type="button"
+                                                    class="btn btn-sm btn-outline-info">{{__('genres.view')}}</button>
+                                            <button type="button"
+                                                    class="btn btn-sm btn-primary">{{__('genres.edit')}}</button>
+
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" class="btn btn-sm btn-danger"
+                                                   value="{{__('genres.delete')}}"/>
+                                        </div>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
