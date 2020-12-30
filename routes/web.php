@@ -35,8 +35,7 @@ Route::get('book-detail', function () {
     return view('user.pages.book_detail');
 });
 Route::prefix('account')->group(function () {
-
-    Route::get('history', function () {
+    Route::get('/history', function () {
         return view('user.pages.account.history');
     });
 

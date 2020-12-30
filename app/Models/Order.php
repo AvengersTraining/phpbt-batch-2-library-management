@@ -37,5 +37,4 @@ class Order extends Model
     {
         return $this->belongsTo(User::class, 'returned_by_admin_id');
     }
-
 }

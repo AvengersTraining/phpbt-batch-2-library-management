@@ -1,5 +1,5 @@
 /*
-	mmenu position extension CSS
+    mmenu position extension CSS
 */
 .mm-menu.mm-top {
   width: 100%; }
@@ -136,7 +136,7 @@ html.mm-bottom.mm-opened.mm-opening .mm-fixed-top {
   html.mm-bottom.mm-opened.mm-opening .mm-fixed-top {
     top: -880px; } }
 /*
-	jQuery.mmenu z-position extension CSS
+    jQuery.mmenu z-position extension CSS
 */
 html.mm-front.mm-opened .mm-page {
   top: 0 !important;
