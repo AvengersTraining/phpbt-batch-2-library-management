@@ -3,7 +3,7 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 d-flex">
-                <img src="{{ asset('images/admin/avatar.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{ asset('images/admin/avatar.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
 
         <!-- Sidebar Menu -->
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="nav-icon fas fa-book-open"></i>
                         <p>{{ __('app.manage_book') }}</p>
                         <i class="fas fa-angle-left right"></i>
