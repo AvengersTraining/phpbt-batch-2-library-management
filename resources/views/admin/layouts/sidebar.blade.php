@@ -47,13 +47,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{ route('books.index') }}" class="nav-link">
+                        <a href="{{ route('admin.books.index') }}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>{{ __('manage_book.list') }}</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="{{ route('books.create') }}" class="nav-link">
+                        <a href="{{ route('admin.books.create') }}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>{{ __('manage_book.add') }}</p>
                         </a>

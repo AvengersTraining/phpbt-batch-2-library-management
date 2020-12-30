@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
@@ -15,12 +16,12 @@ use App\Http\Controllers\BookController;
 */
 
 // admin routes
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('admin.index');
-    })->name('admin');
+    })->name('index');
     Route::resource('books', BookController::class)->except('show');
-    Route::get('/genres', [\App\Http\Controllers\GenreController::class, 'index'])->name('admin.genres');
+    Route::resource('genres', GenreController::class)->except('show');
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('auth.index');

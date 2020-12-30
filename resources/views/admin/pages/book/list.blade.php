@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <form method="get" action="{{ route('books.index') }}">
+                    <form method="get" action="{{ route('admin.books.index') }}">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
                                 <div class="row">
@@ -81,7 +81,7 @@
                                         </td>
                                         <td>{{ $book->created_at }}</td>
                                         <td>{{ $book->is_available ? __('manage_book.available') : __('manage_book.unavailable') }}</td>
-                                        <form action="{{ route('books.destroy', ['book' => $book->id]) }}" method="post">
+                                        <form action="{{ route('admin.books.destroy', ['book' => $book->id]) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <td>
