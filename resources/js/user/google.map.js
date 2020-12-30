@@ -5,7 +5,8 @@
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
 
-function init() {
+function init()
+{
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
@@ -15,10 +16,10 @@ function init() {
         // The latitude and longitude to center the map (always required)
         center: new google.maps.LatLng(-37.815799, 144.956113),
         disableDefaultUI: false,
-        
+
     };
 
-    // Get the HTML DOM element that will contain your map 
+    // Get the HTML DOM element that will contain your map
     // We are using a div with id="map" seen below in the <body>
     var mapElement = document.getElementById('map');
 

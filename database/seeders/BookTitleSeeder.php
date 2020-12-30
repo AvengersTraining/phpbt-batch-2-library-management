@@ -6,6 +6,8 @@ use App\Models\Genre;
 use Illuminate\Database\Seeder;
 use App\Models\BookTitle;
 use App\Models\Book;
+use App\Models\BookTitle;
+use Illuminate\Database\Seeder;
 
 class BookTitleSeeder extends Seeder
 {

@@ -14,7 +14,6 @@ class RenameUserBookTableColumn extends Migration
     public function up()
     {
         Schema::table('user_book', function (Blueprint $table) {
-
             $table->renameColumn('admin_id_create', 'created_by_admin_id');
             $table->renameColumn('admin_id_return', 'returned_by_admin_id');
         });

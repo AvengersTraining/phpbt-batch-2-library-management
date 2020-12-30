@@ -24,7 +24,8 @@ class UserFactory extends Factory
     public function definition()
     {
         $gender = $this->faker->randomElement(['male', 'female'])[0];
-        $genderInt = ($gender == 'm') ? 1 : 0;
+        $genderInt = $gender === 'm' ? 1 : 0;
+
         return [
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->e164PhoneNumber,
