@@ -21,6 +21,7 @@ Route::prefix('admin')->group(function () {
     })->name('admin');
     Route::resource('books', BookController::class)->except('show');
     Route::get('/genres', [\App\Http\Controllers\GenreController::class, 'index'])->name('admin.genres');
+    Route::delete('/genres/{id}', [\App\Http\Controllers\GenreController::class, 'destroy'])->name('admin.genre.id');
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('auth.index');

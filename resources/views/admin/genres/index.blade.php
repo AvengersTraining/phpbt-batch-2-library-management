@@ -44,11 +44,16 @@
                                 <td>{{$genre->name}}</td>
                                 <td>{{$genre->description}}</td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-sm btn-outline-info">{{__('genres.view')}}</button>
-                                        <button class="btn btn-sm btn-primary">{{__('genres.edit')}}</button>
-                                        <button class="btn btn-sm btn-danger">{{__('genres.delete')}}</button>
-                                    </div>
+                                    <form method="post" action="{{route('admin.genre.id',['id'=>$genre->id])}}">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-info">{{__('genres.view')}}</button>
+                                            <button type="button" class="btn btn-sm btn-primary">{{__('genres.edit')}}</button>
+
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" class="btn btn-sm btn-danger" value="{{__('genres.delete')}}"/>
+                                        </div>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

@@ -6,4 +6,7 @@ return [
     'name' => 'Tên danh mục',
     'description' => 'Mô tả',
     'all_genres' => 'Danh sách danh mục',
+    'view' => 'Xem',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa',
 ];
