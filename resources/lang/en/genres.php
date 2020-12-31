@@ -9,4 +9,8 @@ return [
     'view' => 'View',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'list_all' => 'List all genres',
+    'add' => 'Add new genre',
+    'delete_success' => 'Successfully deleted genre with id: ',
+    'create_success' => 'New genre created',
 ];

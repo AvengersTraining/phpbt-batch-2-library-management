@@ -16,9 +16,9 @@ use App\Http\Controllers\BookController;
 */
 
 // admin routes
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'is.admin'])->name('admin.')->group(function () {
     Route::get('/', function () {
-        return view('admin.index');
+        return redirect()->route('admin.genres.index');
     })->name('index');
     Route::resource('books', BookController::class)->except('show');
     Route::resource('genres', GenreController::class)->except('show');

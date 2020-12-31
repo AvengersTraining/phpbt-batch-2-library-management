@@ -1,17 +1,12 @@
 @extends('admin.layouts.master')
 
-@section('page')
-    {{__('genres.title')}}
-@endsection
+@section('title', __('genres.title'))
+@section('page', __('genres.title'))
 
 @section('content')
     <div class="row">
         <div class="col-12">
-            @if (session('message'))
-                <div class="alert alert-default-success text-center">
-                    {{ session('message') }}
-                </div>
-            @endif
+            @include('admin.shared.alert')
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{{__('genres.all_genres')}}</h3>

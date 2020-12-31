@@ -10,6 +10,11 @@ class Genre extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+    ];
+
     public function bookTitles(): BelongsToMany
     {
         return $this->belongsToMany(BookTitle::class);
