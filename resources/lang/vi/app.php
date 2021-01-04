@@ -21,4 +21,6 @@ return [
     'manage_history' => 'Lịch sử mượn sách',
     'register_borrow' => 'Đăng kí mượn sách',
     'invalid_email' => 'Thông tin đăng nhập không chính xác.',
+    'unauthorized' => 'Không có quyền truy cập',
+    'admin' => 'Quản lý',
 ];

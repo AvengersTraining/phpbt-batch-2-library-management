@@ -8,11 +8,18 @@
     {{ __('manage_book.all_book') }}
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/admin/select2.min.css') }}">
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
+                    <div class="col-md-10 offset-md-1">
+                        <h1>{{ __('manage_book.find') }}</h1>
+                    </div>
                     <form method="get" action="{{ route('admin.books.index') }}">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
@@ -40,9 +47,55 @@
                             </div>
                         </div>
                     </form>
+                    <div class="col-md-10 offset-md-1">
+                        <h1>{{ __('manage_book.add') }}</h1>
+                    </div>
+                    <form method="post" action="{{ route('admin.books.store') }}">
+                        @csrf
+                        <div class="col-md-10 offset-md-1">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>{{ __('manage_book.title_id') }}:</label>
+                                        <input type="text" class="form-control" name="title_id">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label>{{ __('manage_book.number') }}:</label>
+                                        <input type="text" class="form-control" name="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <button type="submit" class="btn btn-success">{{ __('manage_book.add') }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- /.card-header -->
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('warning'))
+                <div class="alert alert-danger">
+                    {{ session('warning') }}
+                </div>
+            @endif
             <div class="card-body">
                 @include('admin.shared.alert')
                 <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -95,5 +148,9 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-    </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/admin/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/admin/list.js') }}"></script>
 @endsection

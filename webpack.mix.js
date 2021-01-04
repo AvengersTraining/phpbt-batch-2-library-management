@@ -63,7 +63,8 @@ mix.copy(
     .copy("node_modules/admin-lte/plugins/pdfmake/vfs_fonts.js", "public/js/admin")
     .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js", "public/js/admin")
     .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.print.min.js", "public/js/admin")
-    .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js", "public/js/admin"),
+    .copy("node_modules/admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js", "public/js/admin")
+    .copy("node_modules/admin-lte/plugins/select2/js/select2.full.min.js", "public/js/admin"),
 
 mix.copy(
     "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
@@ -104,12 +105,15 @@ mix.copy(
     .copy(
         "node_modules/admin-lte/plugins/summernote/summernote-bs4.min.css",
         "public/css/admin"
-    );
+    )
+    .copy("node_modules/admin-lte/plugins/select2/css/select2.min.css", "public/css/admin");
 
 mix.copy(
     "node_modules/admin-lte/plugins/fontawesome-free/webfonts",
     "public/css/webfonts"
 );
+
+mix.copy("resources/js/admin/book", "public/js/admin");
 mix.copy("resources/images/admin", "public/images/admin");
 mix.sass("resources/sass/admin/app.scss", "public/css/admin");
 // mix for user

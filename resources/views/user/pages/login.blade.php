@@ -31,8 +31,7 @@
                                 <article class="page type-page status-publish hentry">
                                     <div class="entry-content">
                                         <div class="woocommerce">
-                                            <form action="{{ route('auth.login') }}" class="checkout woocommerce-checkout" method="post"
-                                                  name="checkout">
+                                            <form action="{{ route('login') }}" class="checkout woocommerce-checkout" method="post" name="checkout">
                                                 @csrf
                                                 <div class="row">
                                                     <div id="customer_details">

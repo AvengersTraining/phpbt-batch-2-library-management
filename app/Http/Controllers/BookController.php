@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddBookRequest;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\BookTitle;
 
 class BookController extends Controller
 {
@@ -31,14 +33,27 @@ class BookController extends Controller
         return view('admin.pages.book.list', ['books' => $books]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(AddBookRequest $request)
     {
-        //
+        $number = $request->get('number');
+        $title_id = $request->get('title_id');
+
+        $books = [];
+        $now = now();
+
+        for($i = 0; $i < $number; ++$i) {
+            $books[] = [
+                'book_title_id' => $title_id,
+                'is_available' => Book::AVAILABLE,
+                'created_at' => $now,
+            ];
+        }
+
+        Book::insert($books);
+
+        return redirect()
+            ->route('admin.books.index')
+            ->with('success', __('manage_book.add_success'));
     }
 
     /**
@@ -76,7 +91,7 @@ class BookController extends Controller
 
         return redirect()
             ->route('admin.books.index')
-            ->with('status', __('manage_book.delete_success'));
+            ->with('warning', __('manage_book.delete_success'));
     }
 
 }
