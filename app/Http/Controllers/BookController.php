@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddBookRequest;
 use Illuminate\Http\Request;
 use App\Models\Book;
-use App\Models\BookTitle;
 
 class BookController extends Controller
 {
@@ -28,7 +27,7 @@ class BookController extends Controller
                 $query->join('book_titles', 'books.book_title_id', '=', 'book_titles.id')
                     ->where('book_titles.name', 'like', '%' . $keyword . '%');
             }
-        )->with('bookTitle')->select('books.*')->get();
+        )->with('bookTitle')->select('books.*')->paginate(Book::PAGINATE);
 
         return view('admin.pages.book.list', ['books' => $books]);
     }

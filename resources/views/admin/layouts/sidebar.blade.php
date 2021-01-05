@@ -71,12 +71,25 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="nav-icon fas fa-head-side-mask"></i>
-                        <p>
-                            {{ __('app.manage_user') }}
-                        </p>
+                        <p>{{ __('app.manage_user') }}</p>
+                        <i class="fas fa-angle-left right"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('manage_user.list') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('manage_user.add') }}</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

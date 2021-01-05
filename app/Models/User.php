@@ -15,6 +15,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const PAGINATE = 15;
+
     /**
      * The attributes that aren't mass assignable.
      *
@@ -69,5 +71,10 @@ class User extends Authenticatable
     public function returnedOrders(): HasMany
     {
         return $this->hasMany(Order::class, 'returned_by_admin_id', 'id');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 }
