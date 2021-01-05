@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,7 @@ Route::prefix('admin')->middleware(['auth', 'is.admin'])->name('admin.')->group(
         'show', 'create',
     ]);
     Route::resource('genres', GenreController::class)->except('show');
+    Route::resource('users', UserController::class);
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('index');

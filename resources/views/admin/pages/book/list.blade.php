@@ -144,6 +144,7 @@
                         </div>
                     </div>
                 </div>
+                {{ $books->links() }}
             </div>
             <!-- /.card-body -->
         </div>

@@ -13,6 +13,7 @@ class Book extends Model
 
     const AVAILABLE = 1;
     const UNVAILABLE = 0;
+    const PAGINATE = 20;
 
     public function bookTitle(): BelongsTo
     {
