@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -16,23 +17,26 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $type = $request->get('type');
-        $keyword = $request->get('text');
+        $keyword = $request->get('key_word');
 
         if ($type === 'id') {
             $users = User::where('id', $keyword)
-                ->paginate(User::PAGINATE);
+                ->orderByDesc('created_at')
+                ->paginate(config('user.paginate'));
         } else if ($type === 'name') {
             $users = User::where('first_name', 'like', '%' . $keyword . '%')
                 ->orWhere('last_name', 'like', '%' . $keyword . '%')
-                ->paginate(User::PAGINATE);
+                ->orderByDesc('created_at')
+                ->paginate(config('user.paginate'));
         } else if ($type === 'role') {
             $users = User::join('roles', 'users.role_id', '=', 'roles.id')
                 ->where('roles.role_name', $keyword)
+                ->orderByDesc('created_at')
                 ->with('role')
                 ->select('users.*')
-                ->paginate(User::PAGINATE);
+                ->paginate(config('user.paginate'));
         } else {
-            $users = User::paginate(User::PAGINATE);
+            $users = User::orderByDesc('created_at')->paginate(config('user.paginate'));
         }
 
         return view('admin.pages.user.list', ['users' => $users]);
@@ -45,7 +49,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.user.add');
     }
 
     /**
@@ -56,18 +60,24 @@ class UserController extends Controller
      */
     public function store(AddUserRequest $request)
     {
-        //
-    }
+        $dataInput = $request->only([
+            'email',
+            'phone',
+            'password',
+            'first_name',
+            'last_name',
+            'gender',
+            'address',
+            'email_verified',
+            'citizen_id',
+            'role_id',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        User::create($dataInput);
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', __('manage_user.add_success'));
     }
 
     /**
@@ -76,9 +86,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.pages.user.edit', ['user' => $user]);
     }
 
     /**
@@ -88,9 +98,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $user->update($request->only([
+            'phone',
+            'email',
+            'address',
+        ]));
+
+        return redirect()
+            ->route('admin.users.edit', ['user' => $user])
+            ->with('success', __('manage_user.update_success'));
     }
 
     /**
@@ -99,9 +117,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        User::findOrFail($id)->delete();
+        $user->delete();
 
         return redirect()
             ->route('admin.users.index')

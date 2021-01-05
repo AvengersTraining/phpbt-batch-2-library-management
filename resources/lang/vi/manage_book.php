@@ -19,4 +19,5 @@ return [
     'find' => 'Tìm kiếm cuốn sách',
     'title_id' => 'Title ID',
     'no_title' => 'Mã tên sách không tồn tại!',
+    'id' => 'ID',
 ];

@@ -28,16 +28,16 @@
                                         <div class="form-group">
                                             <label>{{ __('manage_user.search_by') }}</label>
                                             <select class="form-control" name="type">
-                                                <option value="id">{{ __('manage_user.id') }}</option>
-                                                <option value="role">{{ __('manage_user.role') }}</option>
-                                                <option value="name">{{ __('manage_user.name') }}</option>
+                                                @foreach(config('user.search') as $search)
+                                                    <option value="{{ $search }}" {{ request()->get('type') == $search ? 'selected' : '' }} >{{ __('manage_user.' . $search) }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group input-group-lg">
-                                        <input type="search" class="form-control form-control-lg" placeholder="{{ __('manage_user.keyword') }}" name="text">
+                                        <input type="text" class="form-control form-control-lg" placeholder="{{ __('manage_user.keyword') }}" name="key_word" value="{{ request()->get('key_word') }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-lg btn-default">
                                                 <i class="fa fa-search"></i>
@@ -81,7 +81,7 @@
                                     <tr role="row" class="even">
                                         <td class="sorting_1 dtr-control">{{ $user->id }}</td>
                                         <td>
-                                            <a href="#">
+                                            <a href="{{ route('admin.users.edit', ['user' => $user]) }}">
                                                 {{ $user->full_name }}
                                             </a>
                                         </td>
@@ -89,7 +89,7 @@
                                         <td>
                                             {{ $user->role->role_name }}
                                         </td>
-                                        <form action="{{ route('admin.users.destroy', ['user' => $user->id]) }}" method="post">
+                                        <form action="{{ route('admin.users.destroy', ['user' => $user]) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <td>

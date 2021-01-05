@@ -19,4 +19,5 @@ return [
     'find' => 'Find a book',
     'title_id' => 'Title ID',
     'no_title' => 'Your title ID is not exist!',
+    'id' => 'ID',
 ];
