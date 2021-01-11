@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGenreRequest;
 use App\Models\Genre;
-use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
@@ -24,14 +23,29 @@ class GenreController extends Controller
     {
         Genre::create($request->all());
 
-        return redirect()->route('admin.genres.index')->with('success', __('genres.create_success'));
+        return redirect()
+            ->route('admin.genres.index')
+            ->with('success', __('genres.create_success'));
     }
 
-    public function destroy($id)
+    public function destroy(Genre $genre)
     {
-        $genre = Genre::findOrFail($id);
         $genre->delete();
 
-        return back()->with('success', __('genres.delete_success') . $id);
+        return back()->with('success', __('genres.delete_success') . $genre->id);
+    }
+
+    public function edit(Genre $genre)
+    {
+        return view('admin.genres.edit', compact('genre'));
+    }
+
+    public function update(StoreGenreRequest $request, Genre $genre)
+    {
+        $genre->update($request->only(['name', 'description']));
+
+        return redirect()
+            ->route('admin.genres.index')
+            ->with('success', __('genres.update_success') . $genre->id);
     }
 }

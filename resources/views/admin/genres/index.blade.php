@@ -44,18 +44,14 @@
                                 <td>{{$genre->name}}</td>
                                 <td>{{$genre->description}}</td>
                                 <td>
-                                    <form method="post"
-                                          action="{{ route('admin.genres.destroy', ['genre' => $genre->id]) }}">
+                                    <form method="post" action="{{ route('admin.genres.destroy', ['genre' => $genre->id]) }}">
                                         <div class="btn-group">
-                                            <button type="button"
-                                                    class="btn btn-sm btn-outline-info">{{__('genres.view')}}</button>
-                                            <button type="button"
-                                                    class="btn btn-sm btn-primary">{{__('genres.edit')}}</button>
+                                            <button type="button" class="btn btn-sm btn-outline-info">{{ __('genres.view') }}</button>
+                                            <a type="button" href="{{ route('admin.genres.edit', ['genre' => $genre->id]) }}" class="btn btn-sm btn-primary text-white">{{ __('genres.edit')}}</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <input type="submit" class="btn btn-sm btn-danger"
-                                                   value="{{__('genres.delete')}}"/>
+                                            <input type="submit" class="btn btn-sm btn-danger" value="{{__('genres.delete')}}"/>
                                         </div>
                                     </form>
                                 </td>

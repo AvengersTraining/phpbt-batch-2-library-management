@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class StoreGenreRequest extends FormRequest
 {
@@ -24,8 +24,10 @@ class StoreGenreRequest extends FormRequest
      */
     public function rules()
     {
+        $ignoreId = $this->isMethod('PUT') ? $this->genre->id : null;
+
         return [
-            'name' => 'required|unique:genres|min:2',
+            'name' => ['required', 'min:2', Rule::unique('genres')->ignore($ignoreId)],
             'description' => 'required|min:2',
         ];
     }
