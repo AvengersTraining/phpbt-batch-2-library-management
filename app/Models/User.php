@@ -15,7 +15,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    const PAGINATE = 15;
+    const UNVERIFIED = 0;
+    const VERIFIED = 1;
 
     /**
      * The attributes that aren't mass assignable.
@@ -23,7 +24,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = [
-        'email_verified',
     ];
 
     /**

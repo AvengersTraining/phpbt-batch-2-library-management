@@ -25,7 +25,7 @@ Route::prefix('admin')->middleware(['auth', 'is.admin'])->name('admin.')->group(
         'show', 'create',
     ]);
     Route::resource('genres', GenreController::class)->except('show');
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class)->except('show');
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('index');

@@ -77,25 +77,6 @@
                 </div>
             </div>
             <!-- /.card-header -->
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @elseif (session('warning'))
-                <div class="alert alert-danger">
-                    {{ session('warning') }}
-                </div>
-            @endif
             <div class="card-body">
                 @include('admin.shared.alert')
                 <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -105,7 +86,7 @@
                                 <thead>
                                 <tr role="row">
                                     <th>
-                                        ID
+                                        {{ __('manage_book.id') }}
                                     </th>
                                     <th>
                                         {{ __('manage_book.title') }}

@@ -16,15 +16,16 @@
     @include('admin.shared.alert')
     <div class="card col-8 offset-md-2">
         <div class="card-body">
-            <form action="{{ route('admin.users.store') }}" method="post">
+            <form action="{{ route('admin.users.update', ['user' => $user]) }}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-3">
                         <div class="form-group">
                             <label>{{ __('manage_user.role') }}</label>
-                            <select class="form-control" name="role">
+                            <select class="form-control" name="role" >
                                 @foreach(config('user.role') as $key => $value )
-                                    <option value="{{ $value }}" {{ old('role') == $value ? 'selected' : '' }}>{{ __('manage_user.' . $key) }}</option>
+                                    <option value="{{ $value }}" {{ $user->role_id === $key ? 'selected' : '' }}>{{ __('manage_user.' . $key) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -34,7 +35,7 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>{{ __('manage_user.citizen_id') }}</label>
-                            <input type="text" class="form-control" name="citizen_id" value="{{ old('citizen_id') }}">
+                            <input type="text" class="form-control" name="citizen_id" disabled value="{{ $user->citizen_id }}">
                         </div>
                     </div>
                 </div>
@@ -42,13 +43,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>{{ __('manage_user.first_name') }}</label>
-                            <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
+                            <input type="text" class="form-control" name="first_name" disabled value="{{ $user->first_name }}">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>{{ __('manage_user.last_name') }}</label>
-                            <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+                            <input type="text" class="form-control" name="last_name" disabled value="{{ $user->last_name }}">
                         </div>
                     </div>
                 </div>
@@ -56,9 +57,9 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label>{{ __('manage_user.gender') }}</label>
-                            <select class="form-control" name="gender">
+                            <select class="form-control" name="gender" disabled>
                                 @foreach(config('user.gender') as $key => $value )
-                                    <option value="{{ $value }}" {{ (int) old('gender') === $value ? 'selected' : '' }}>{{ __('manage_user.' . $key) }}</option>
+                                    <option value="{{ $value }}" {{ $user->gender === $key ? 'selected' : '' }}>{{ __('manage_user.' . $key) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -68,13 +69,13 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label>{{ __('manage_user.phone') }}</label>
-                            <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+                            <input type="text" class="form-control" name="phone" value="{{ $user->phone }}">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>{{ __('manage_user.email') }}</label>
-                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            <input type="email" class="form-control" name="email" value="{{ $user->email }}">
                         </div>
                     </div>
                 </div>
@@ -82,14 +83,14 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label>{{ __('manage_user.address') }}</label>
-                            <input type="text" class="form-control" name="address" value="{{ old('address') }}">
+                            <input type="text" class="form-control" name="address" value="{{ $user->address }}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-5"></div>
                     <div class="col-3">
-                        <button type="submit" class="btn btn-success">{{ __('manage_user.create') }}</button>
+                        <button type="submit" class="btn btn-success">{{ __('manage_user.save') }}</button>
                     </div>
                 </div>
             </form>
