@@ -66,6 +66,20 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>{{ __('manage_user.password') }}</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>{{ __('manage_user.re_password') }}</label>
+                            <input type="password" class="form-control" name="re_password">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-3">
                         <div class="form-group">
                             <label>{{ __('manage_user.phone') }}</label>

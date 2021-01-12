@@ -29,4 +29,6 @@ return [
     'create' => 'Tạo mới',
     'save' => 'Lưu',
     'update_success' => 'Lưu thành công!',
+    'password' => 'Mật khẩu',
+    're_password' => 'Nhập lại mật khẩu',
 ];

@@ -29,4 +29,6 @@ return [
     'create' => 'Create',
     'save' => 'Save',
     'update_success' => 'Update successful!',
+    'password' => 'Password',
+    're_password' => 'Re-password',
 ];

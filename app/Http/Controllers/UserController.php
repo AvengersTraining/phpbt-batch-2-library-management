@@ -63,15 +63,15 @@ class UserController extends Controller
         $dataInput = $request->only([
             'email',
             'phone',
-            'password',
             'first_name',
             'last_name',
             'gender',
             'address',
-            'email_verified',
             'citizen_id',
             'role_id',
         ]);
+        $dataInput["password"] = bcrypt($request->get('citizen_id'));
+        $dataInput["email_verified"] = User::UNVERIFIED;
 
         User::create($dataInput);
 
@@ -100,11 +100,16 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->only([
+        $dataInput = $request->only([
             'phone',
             'email',
             'address',
-        ]));
+        ]);
+        if ($request->get('password') !== null) {
+            $dataInput['password'] = bcrypt($request->get('password'));
+        }
+
+        $user->update($dataInput);
 
         return redirect()
             ->route('admin.users.edit', ['user' => $user])
