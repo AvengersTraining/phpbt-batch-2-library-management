@@ -11,6 +11,8 @@ class BookTitle extends Model
 {
     use HasFactory;
 
+    public const PAGINATE = 10;
+
     public function books(): HasMany
     {
         return $this->hasMany(Book::class);
