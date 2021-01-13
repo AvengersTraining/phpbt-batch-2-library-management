@@ -9,6 +9,7 @@ use App\Models\Genre;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BookTitleController extends Controller
 {
@@ -70,8 +71,13 @@ class BookTitleController extends Controller
             'released_date',
             'description',
         ]);
-        $request->file('thumbnail')->store('public');
-        $data['thumbnail'] = asset('storage/' . $request->file('thumbnail')->hashName());
+
+        $fileName = uniqid() . $request->file('thumbnail')->hashName();
+        $filePath = config('storage.book_titles') . '/' . $fileName;
+
+        Storage::disk('public')->put($filePath, file_get_contents($request->file('thumbnail')));
+//        $path = $request->file('thumbnail')->storeAs(config('storage.book_titles'),$fileName);
+        $data['thumbnail'] = asset(Storage::url($filePath));
 
         $bookTitle = BookTitle::create($data);
         $bookTitle->genres()->attach($request->genres);
