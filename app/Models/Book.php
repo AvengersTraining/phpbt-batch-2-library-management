@@ -12,7 +12,7 @@ class Book extends Model
     use HasFactory;
 
     const AVAILABLE = 1;
-    const UNVAILABLE = 0;
+    const UNAVAILABLE = 0;
     const PAGINATE = 20;
 
     public function bookTitle(): BelongsTo

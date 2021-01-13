@@ -22,7 +22,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label>{{ __('manage_user.role') }}</label>
-                            <select class="form-control" name="role">
+                            <select class="form-control" name="role_id">
                                 @foreach(config('user.role') as $key => $value )
                                     <option value="{{ $value }}" {{ old('role') == $value ? 'selected' : '' }}>{{ __('manage_user.' . $key) }}</option>
                                 @endforeach
