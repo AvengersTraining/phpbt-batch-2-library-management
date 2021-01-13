@@ -17,4 +17,6 @@ return [
     'delete_success' => 'Xóa thành công đầu sách với id: ',
     'create_success' => 'Tạo đầu sách thành công',
     'search' => 'Tìm kiếm',
+    'books_in_stock' => 'Số sách trong kho',
+    'books_availabe' => 'Số sách có sẵn',
 ];

@@ -20,10 +20,10 @@ class BookController extends Controller
 
         $books = Book::when(
             $type === 'id',
-            function($query) use ($type, $keyword) {
+            function ($query) use ($type, $keyword) {
                 $query->where($type, $keyword);
             },
-            function($query) use ($keyword) {
+            function ($query) use ($keyword) {
                 $query->join('book_titles', 'books.book_title_id', '=', 'book_titles.id')
                     ->where('book_titles.name', 'like', '%' . $keyword . '%');
             }
@@ -40,7 +40,7 @@ class BookController extends Controller
         $books = [];
         $now = now();
 
-        for($i = 0; $i < $number; ++$i) {
+        for ($i = 0; $i < $number; ++$i) {
             $books[] = [
                 'book_title_id' => $title_id,
                 'is_available' => Book::AVAILABLE,
@@ -58,7 +58,7 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,8 +69,8 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -81,7 +81,7 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

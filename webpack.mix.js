@@ -28,6 +28,10 @@ mix.copy(
         "public/js/admin"
     )
     .copy(
+        "node_modules/admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js",
+        "public/js/admin"
+    )
+    .copy(
         "node_modules/admin-lte/plugins/moment/moment.min.js",
         "public/js/admin"
     )
