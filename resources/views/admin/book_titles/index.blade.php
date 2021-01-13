@@ -44,6 +44,7 @@
                             <th>{{ __('genres.title') }}</th>
                             <th>{{ __('book_titles.description') }}</th>
                             <th>{{ __('book_titles.released_date') }}</th>
+                            <th>{{ __('book_titles.books_availabe') }}</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -56,9 +57,10 @@
                                 <td><img src="{{$title->thumbnail}}" style="max-width: 100px; max-height: 180px" alt=""></td>
                                 <td>{{ $title->name }}</td>
                                 <td>{{ $title->author }}</td>
-                                <td>{{ $title->genres->pluck('name')->join(', ') }}</td>
+                                <td>{{ $title->genres }}</td>
                                 <td>{{ $title->description }}</td>
-                                <td>{{ date("m/Y",strtotime($title->released_date)) }}</td>
+                                <td>{{ $title->released_date }}</td>
+                                <td>{{ $title->available }}</td>
                                 <td>
                                     <form method="post"
                                         action="{{ route('admin.book_titles.destroy', ['book_title' => $title->id]) }}">
@@ -78,7 +80,7 @@
                         </tbody>
                     </table>
                     <div class="mt-3 mx-3">
-                        {{ $bookTitles->links() }}
+                        {!! $links !!}
                     </div>
                 </div>
                 <!-- /.card-body -->

@@ -17,6 +17,7 @@ class CreateBookTitleGenreTable extends Migration
             $table->bigInteger('book_title_id'); // FK to 'book_titles'
             $table->bigInteger('genre_id'); // FK to 'genres'
             $table->timestamps();
+            $table->primary(['book_title_id', 'genre_id']);
         });
     }
 

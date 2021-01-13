@@ -17,4 +17,6 @@ return [
     'delete_success' => 'Successfully deleted book title with id: ',
     'create_success' => 'New book title created',
     'search' => 'Search',
+    'books_in_stock' => 'Number of books in stock',
+    'books_availabe' => 'Number of books available',
 ];

@@ -13,6 +13,14 @@ class BookTitle extends Model
 
     public const PAGINATE = 10;
 
+    protected $fillable = [
+        'name',
+        'author',
+        'released_date',
+        'description',
+        'thumbnail',
+    ];
+
     public function books(): HasMany
     {
         return $this->hasMany(Book::class);
