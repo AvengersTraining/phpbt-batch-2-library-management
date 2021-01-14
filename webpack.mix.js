@@ -118,6 +118,7 @@ mix.copy(
 );
 
 mix.copy("resources/js/admin/book", "public/js/admin");
+mix.copy("resources/js/admin/book_titles", "public/js/admin/book_titles");
 mix.copy("resources/images/admin", "public/images/admin");
 mix.sass("resources/sass/admin/app.scss", "public/css/admin");
 // mix for user
