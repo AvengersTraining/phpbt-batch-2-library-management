@@ -4,6 +4,7 @@
     "/js/admin/bootstrap.bundle.min.js": "/js/admin/bootstrap.bundle.min.js",
     "/js/admin/select2.full.min.js": "/js/admin/select2.full.min.js",
     "/js/admin/jquery.bootstrap-duallistbox.min.js": "/js/admin/jquery.bootstrap-duallistbox.min.js",
+    "/js/admin/bs-custom-file-input.min.js": "/js/admin/bs-custom-file-input.min.js",
     "/js/admin/moment.min.js": "/js/admin/moment.min.js",
     "/js/admin/jquery.inputmask.min.js": "/js/admin/jquery.inputmask.min.js",
     "/js/admin/daterangepicker.js": "/js/admin/daterangepicker.js",

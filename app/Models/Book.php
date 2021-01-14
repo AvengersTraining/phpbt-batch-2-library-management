@@ -11,6 +11,10 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'is_available',
+    ];
+
     const AVAILABLE = 1;
     const UNAVAILABLE = 0;
     const PAGINATE = 20;
