@@ -19,6 +19,14 @@ class Book extends Model
     const UNAVAILABLE = 0;
     const PAGINATE = 20;
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [
+    ];
+
     public function bookTitle(): BelongsTo
     {
         return $this->belongsTo(BookTitle::class);

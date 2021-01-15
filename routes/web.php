@@ -6,6 +6,7 @@ use App\Http\Controllers\BookTitleController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,19 +23,16 @@ Route::prefix('admin')->middleware(['auth', 'is.admin'])->name('admin.')->group(
     Route::get('/', function () {
         return redirect()->route('admin.genres.index');
     })->name('index');
-    Route::resource('books', BookController::class)->except([
-        'show',
-        'create',
-    ]);
+    Route::resource('books', BookController::class)->except('create');
     Route::resource('genres', GenreController::class)->except('show');
-    Route::resource('users', UserController::class)->except('show');
+    Route::resource('users', UserController::class);
     Route::resource('book_titles', BookTitleController::class)->except('show');
+    Route::resource('orders', OrderController::class);
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('index');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-
 
 // temp routes for users
 Route::get('/', function () {
