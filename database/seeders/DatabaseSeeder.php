@@ -19,8 +19,7 @@ class DatabaseSeeder extends Seeder
             GenreSeeder::class,
             BookTitleSeeder::class,
             BookSeeder::class,
-
+            OrderSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
     }
 }
