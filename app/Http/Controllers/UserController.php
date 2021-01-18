@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -42,6 +43,16 @@ class UserController extends Controller
         return view('admin.pages.user.list', ['users' => $users]);
     }
 
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->role_id === Role::BANNED) {
+            return response()->json(['is_active' => false]);
+        }
+
+        return view('admin.pages.order.user_detail', ['user' => $user]);
+    }
     /**
      * Show the form for creating a new resource.
      *

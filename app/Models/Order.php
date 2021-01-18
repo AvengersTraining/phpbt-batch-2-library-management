@@ -10,6 +10,12 @@ class Order extends Model
 {
     use HasFactory;
 
+    const BORROWING = 0;
+    const OUT_DATE = 1;
+    const LOST = 2;
+
+    protected $table = 'user_book';
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -32,6 +32,17 @@ class BookController extends Controller
         return view('admin.pages.book.list', ['books' => $books]);
     }
 
+    public function show($id)
+    {
+        $book = Book::findOrFail($id);
+
+        if (!$book->is_available) {
+            return response()->json(['is_active' => false]);
+        }
+
+        return view('admin.pages.order.book_detail', ['book' => $book]);
+    }
+
     public function store(AddBookRequest $request)
     {
         $number = $request->get('number');

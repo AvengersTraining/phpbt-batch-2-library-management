@@ -109,18 +109,23 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-history"></i>
-                        <p>
-                            {{ __('app.manage_history') }}
-                        </p>
+                        <p>{{ __('app.manage_borrowing') }}</p>
+                        <i class="fas fa-angle-left right"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            {{ __('app.register_borrow') }}
-                        </p>
-                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.orders.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('manage_borrowing.history') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.orders.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('manage_borrowing.borrow') }}</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
