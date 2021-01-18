@@ -23,14 +23,20 @@ class StoreBookTitleRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required|min:2',
             'author' => 'required|min:2',
             'description' => 'required|min:2',
             'released_date' => 'required|date',
-            'thumbnail' => 'required|file',
+            'thumbnail' => 'file',
             'genres' => 'required|array|min:1',
-            'books_amount' => 'min:0',
         ];
+
+        if ($this->isMethod('POST')) {
+            $rules['thumbnail'] .= '|required';
+            $rules['books_amount'] = 'required|min:0';
+        }
+
+        return $rules;
     }
 }

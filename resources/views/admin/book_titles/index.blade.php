@@ -65,9 +65,9 @@
                                     <form method="post"
                                         action="{{ route('admin.book_titles.destroy', ['book_title' => $title->id]) }}">
                                         <div class="btn-group">
-                                            <button type="button"
-                                                class="btn btn-sm btn-primary">{{ __('book_titles.edit') }}</button>
-
+                                            <a type="button"
+                                               href="{{ route('admin.book_titles.edit', ['book_title' => $title->id]) }}"
+                                               class="btn btn-sm btn-primary text-white">{{ __('book_titles.edit')}}</a>
                                             @csrf
                                             @method('DELETE')
                                             <input type="submit" class="btn btn-sm btn-danger"
