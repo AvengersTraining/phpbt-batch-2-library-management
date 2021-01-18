@@ -13,6 +13,24 @@ use Illuminate\Support\Facades\Storage;
 
 class BookTitleController extends Controller
 {
+    private function getFillableData($request)
+    {
+        $data = $request->only([
+            'name',
+            'author',
+            'released_date',
+            'description',
+        ]);
+
+        if ($request->has('thumbnail')) {
+            $fileName = uniqid() . $request->file('thumbnail')->hashName();
+            $filePath = config('storage.book_titles') . '/' . $fileName;
+            $data['thumbnail'] = $filePath;
+        }
+
+        return $data;
+    }
+
     public function index(Request $request)
     {
         $filtered = BookTitle::query();
@@ -56,18 +74,9 @@ class BookTitleController extends Controller
 
     public function store(StoreBookTitleRequest $request)
     {
-        $data = $request->only([
-            'name',
-            'author',
-            'released_date',
-            'description',
-        ]);
+        $data = $this->getFillableData($request);
 
-        $fileName = uniqid() . $request->file('thumbnail')->hashName();
-        $filePath = config('storage.book_titles') . '/' . $fileName;
-
-        Storage::disk('public')->put($filePath, file_get_contents($request->file('thumbnail')));
-        $data['thumbnail'] = $filePath;
+        Storage::disk('public')->put($data['thumbnail'], file_get_contents($request->file('thumbnail')));
 
         $bookTitle = BookTitle::create($data);
         $bookTitle->genres()->attach($request->genres);
@@ -78,5 +87,26 @@ class BookTitleController extends Controller
         return redirect()
             ->route('admin.book_titles.index')
             ->with('success', __('book_titles.create_success'));
+    }
+
+    public function edit(BookTitle $bookTitle)
+    {
+        $genres = Genre::all();
+
+        return view('admin.book_titles.edit', compact('bookTitle', 'genres'));
+    }
+
+    public function update(StoreBookTitleRequest $request, BookTitle $bookTitle)
+    {
+        $data = $this->getFillableData($request);
+
+        if ($request->has('thumbnail')) {
+            Storage::disk('public')->put($data['thumbnail'], file_get_contents($request->file('thumbnail')));
+        }
+
+        $bookTitle->update($data);
+        $bookTitle->genres()->sync($request->genres);
+
+        return back()->with('success', __('book_titles.update_success') . $bookTitle->id);
     }
 }
