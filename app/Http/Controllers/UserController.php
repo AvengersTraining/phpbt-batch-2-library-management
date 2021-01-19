@@ -43,9 +43,15 @@ class UserController extends Controller
         return view('admin.pages.user.list', ['users' => $users]);
     }
 
-    public function show($id)
+    public function show($key)
     {
-        $user = User::findOrFail($id);
+        $user = User::where('phone', $key)
+            ->orWhere('email', $key)
+            ->first();
+
+        if (!$user) {
+            return response()->json('Not found', 404);
+        }
 
         if ($user->role_id === Role::BANNED) {
             return response()->json(['is_active' => false]);

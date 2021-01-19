@@ -12,4 +12,5 @@ return [
     'banned_user' => 'Người dùng đã bị chặn!',
     'unavailable_book' => 'Cuốn sách không khả dụng để mượn!',
     'selected_book' => 'Cuốn sách đã được chọn!',
+    'phone_email' => 'Nhập số điện thoại hoặc email...',
 ];
