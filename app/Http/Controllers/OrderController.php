@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReturnRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
@@ -20,6 +21,20 @@ class OrderController extends Controller
         //
     }
 
+    public function show($bookId)
+    {
+        $order = Order::whereByAttribute([
+                'book_id' => $bookId,
+                'status' => Order::BORROWED,
+            ])
+            ->with([
+                'book.bookTitle',
+                'user',
+            ])
+            ->firstOrFail();
+
+        return view('admin.pages.order.order_detail', ['order' => $order]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,61 +53,44 @@ class OrderController extends Controller
      */
     public function store(OrderRequest $request)
     {
-        $bookId = $request->get('book_id');
-        $return_dates = $request->get('date');
+        $bookIds = $request->get('book_id');
+        $returnDates = $request->get('date');
         $order = [];
 
-        foreach ($bookId as $key => $value) {
+        foreach ($bookIds as $key => $value) {
             $order[] = [
                 'user_id' => $request->get('user_detail'),
                 'book_id' => $value,
                 'start_date' => date('Y-m-d'),
-                'end_date' => $return_dates[$key],
+                'end_date' => $returnDates[$key],
                 'status' => Order::BORROWED,
                 'created_by_admin_id' => Auth::id(),
             ];
         }
 
         Order::insert($order);
-        Book::whereIn('id', $bookId)->update(['is_available' => Book::UNAVAILABLE]);
+        Book::whereIn('id', $bookIds)->update(['is_available' => Book::UNAVAILABLE]);
 
         return redirect()
             ->route('admin.orders.create')
             ->with('success', __('manage_borrowing.order_success'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function return() {
+        return view('admin.pages.order.return');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(ReturnRequest $request)
     {
-        //
-    }
+        $orderId = $request->get('order_id');
+        $bookId = $request->get('book_id');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        Order::whereIn('id', $orderId)->update(['status' => Order::RETURN]);
+        Book::whereIn('id', $bookId)->update(['is_available' => Book::AVAILABLE]);
+
+        return redirect()
+            ->route('admin.orders.return')
+            ->with('success', __('manage_borrowing.return_success'));
     }
 
     /**

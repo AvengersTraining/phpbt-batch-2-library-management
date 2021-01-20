@@ -1,9 +1,5 @@
 @extends('admin.layouts.master')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/admin/daterangepicker.css') }}">
-@endsection
-
 @section('title')
     {{ __('manage_borrowing.borrow') }}
 @endsection
@@ -25,7 +21,7 @@
                         </div>
                     </div>
                     <div class="row col-2">
-                        <input type="text" class="form-control" name="user" autocomplete="off"/>
+                        <input type="text" class="form-control" name="user" placeholder="{{ __('manage_borrowing.phone_email') }}" autocomplete="off"/>
                     </div>
                 </div>
                 <div class="row">

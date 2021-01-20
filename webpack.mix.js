@@ -117,8 +117,8 @@ mix.copy(
     "public/css/webfonts"
 );
 
-mix.copy("resources/js/admin/book", "public/js/admin")
-    .copy("resources/js/admin/borrowing", "public/js/admin")
+mix.copy("resources/js/admin/book", "public/js/admin/book")
+    .copy("resources/js/admin/borrowing", "public/js/admin/borrowing")
     .copy("resources/js/admin/book_titles", "public/js/admin/book_titles");
 mix.copy("resources/images/admin", "public/images/admin");
 mix.sass("resources/sass/admin/app.scss", "public/css/admin");
