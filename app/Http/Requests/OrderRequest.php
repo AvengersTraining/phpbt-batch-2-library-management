@@ -33,8 +33,8 @@ class OrderRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_detail.required' => 'User must be required!',
-            'book_id.required' => 'Book must be required!',
+            'user_detail.required' => 'No user orders book!',
+            'book_id.required' => 'No book to order!',
             'date.*.required' => 'Return date must be required!',
             'date.*.after:today' => 'Return date must be after today!',
         ];

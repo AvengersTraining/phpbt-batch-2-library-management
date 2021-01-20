@@ -12,4 +12,5 @@ return [
     'banned_user' => 'This user is banned!',
     'unavailable_book' => 'This book is unavailable to borrow!',
     'selected_book' => 'This book is selected!',
+    'phone_email' => 'Enter phone or email...',
 ];
