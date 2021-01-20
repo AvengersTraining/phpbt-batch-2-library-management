@@ -27,7 +27,12 @@ Route::prefix('admin')->middleware(['auth', 'is.admin'])->name('admin.')->group(
     Route::resource('genres', GenreController::class)->except('show');
     Route::resource('users', UserController::class);
     Route::resource('book_titles', BookTitleController::class)->except('show');
-    Route::resource('orders', OrderController::class);
+    Route::get('/orders/return', [OrderController::class, 'return'])->name('orders.return');
+    Route::put('/orders/update', [OrderController::class, 'update'])->name('orders.update');
+    Route::resource('orders', OrderController::class)->except([
+        'edit',
+        'update',
+    ]);
 });
 
 Route::get('login', [AuthController::class, 'index'])->name('index');

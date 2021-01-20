@@ -125,6 +125,12 @@
                                 <p>{{ __('manage_borrowing.borrow') }}</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.orders.return') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('manage_borrowing.return') }}</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

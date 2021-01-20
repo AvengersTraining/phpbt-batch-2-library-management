@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OrderRequest extends FormRequest
+class ReturnRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,14 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_detail' => 'required',
-            'book_id' => 'required',
-            'date.*' => 'required|date|after:today',
+            'order_id' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'user_detail.required' => __('manage_borrowing.user_required'),
-            'book_id.required' => __('manage_borrowing.order_book_required'),
-            'date.*.required' => __('manage_borrowing.date_required'),
-            'date.*.after:today' => __('manage_borrowing.date_after_today'),
+            'order_id.required' => __('manage_borrowing.return_book_required'),
         ];
     }
 }
