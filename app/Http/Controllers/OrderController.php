@@ -48,7 +48,7 @@ class OrderController extends Controller
                 'book_id' => $value,
                 'start_date' => date('Y-m-d'),
                 'end_date' => $return_dates[$key],
-                'status' => Order::BORROWING,
+                'status' => Order::BORROWED,
                 'created_by_admin_id' => Auth::id(),
             ];
         }

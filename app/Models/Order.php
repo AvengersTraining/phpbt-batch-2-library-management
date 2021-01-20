@@ -10,9 +10,9 @@ class Order extends Model
 {
     use HasFactory;
 
-    const BORROWING = 0;
-    const OUT_DATE = 1;
-    const LOST = 2;
+    public const BORROWED = 0;
+    public const RETURNED = 1;
+    public const LOST = 2;
 
     protected $table = 'user_book';
 
