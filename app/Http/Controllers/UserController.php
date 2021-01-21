@@ -88,7 +88,6 @@ class UserController extends Controller
             'role_id',
         ]);
         $dataInput["password"] = bcrypt($request->get('citizen_id'));
-        $dataInput["email_verified"] = User::UNVERIFIED;
 
         User::create($dataInput);
 
