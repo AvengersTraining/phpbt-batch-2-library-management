@@ -107,6 +107,14 @@
                                            href="{{ route('user.profile') }}">{{ __('app.account') }}</a>
                                     </li>
                                     <li>
+                                        <form action="{{ route('verification.sendVerification') }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link" style="font-size: 14px; padding: 0; text-transform: uppercase;">
+                                                {{ __('app.verify_email') }}
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li>
                                         <form action="{{ route('logout') }}" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-link" style="font-size: 14px; padding: 0; text-transform: uppercase;">
@@ -121,6 +129,7 @@
                         </div>
                     </div>
                 </div>
+                @include('admin.shared.alert')
                 <div class="mobile-menu hidden-lg hidden-md">
                     <a href="#mobile-menu"><i class="fa fa-navicon"></i></a>
                     <div id="mobile-menu">
