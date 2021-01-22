@@ -98,7 +98,7 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/admin/borrow.js') }}"></script>
+    <script src="{{ asset('js/admin/borrowing/borrow.js') }}"></script>
 @endsection
 
 

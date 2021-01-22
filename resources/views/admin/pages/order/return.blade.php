@@ -74,5 +74,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/admin/return.js') }}"></script>
+    <script src="{{ asset('js/admin/borrowing/return.js') }}"></script>
 @endsection

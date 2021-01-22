@@ -25,6 +25,7 @@ class UserFactory extends Factory
     {
         $gender = $this->faker->randomElement(['male', 'female'])[0];
         $genderInt = $gender === 'm' ? 1 : 0;
+        $createdAt = $this->faker->dateTime(now());
 
         return [
             'email' => $this->faker->unique()->safeEmail,
@@ -34,11 +35,11 @@ class UserFactory extends Factory
             'last_name' => $this->faker->lastName,
             'gender' => $genderInt,
             'address' => $this->faker->address,
-            'email_verified' => $this->faker->randomElement(['0', '1']),
+            'email_verified_at' => $this->faker->randomElement([$this->faker->dateTimeBetween($createdAt, now()), null]),
             'citizen_id' => $this->faker->unique()->numerify(str_repeat('#', 12)),
             'role_id' => Role::pluck('id')->random(),
             'remember_token' => Str::random(10),
-            'created_at' => $this->faker->dateTime(),
+            'created_at' => $createdAt,
         ];
     }
 }

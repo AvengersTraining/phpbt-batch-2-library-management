@@ -41,7 +41,7 @@ class OrderFactory extends Factory
 
         return [
             'user_id' => User::where('role_id', Role::NORMAL)
-                ->where('email_verified', User::VERIFIED)
+                ->whereNotNull('email_verified_at')
                 ->pluck('id')->random(),
             'book_id' => $book->id,
             'start_date' => $startDate,
