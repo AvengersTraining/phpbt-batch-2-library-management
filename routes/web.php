@@ -7,6 +7,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\EmailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,15 +47,25 @@ Route::get('/', function () {
 Route::get('book-detail', function () {
     return view('user.pages.book_detail');
 });
-Route::prefix('account')->middleware('auth')->group(function () {
+
+// confirm email
+Route::prefix('/email')->middleware('auth')->group(function ()
+{
+    Route::get('/verify', [EmailController::class, 'notice'])
+        ->name('verification.notice');
+    Route::get('/verify/{id}/{hash}', [EmailController::class, 'verify'])
+        ->middleware('signed')->name('verification.verify');
+    Route::post('/verification-notification', [EmailController::class, 'sendVerification'])
+        ->middleware('throttle:6,1')->name('verification.sendVerification');
+});
+
+Route::prefix('account')->middleware(['auth', 'verified'])->group(function () {
     Route::get('history', function () {
         return view('user.pages.account.history');
     });
-
     Route::get('profile', function () {
         return view('user.pages.account.profile');
     })->name('user.profile');
-
     Route::get('password', function () {
         return view('user.pages.account.password');
     });
