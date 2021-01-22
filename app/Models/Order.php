@@ -14,7 +14,14 @@ class Order extends Model
     public const RETURNED = 1;
     public const LOST = 2;
 
+    public const PAGINATE = 15;
+
     protected $table = 'user_book';
+
+    private function formatDate($date)
+    {
+        return date('d/m/Y', strtotime($date));
+    }
 
     public function user(): BelongsTo
     {
@@ -47,5 +54,34 @@ class Order extends Model
     public function scopeWhereByAttribute($query, $attributes)
     {
         return $query->where($attributes);
+    }
+
+    public function getFormattedStartDateAttribute()
+    {
+        return self::formatDate($this->start_date);
+    }
+
+    public function getFormattedEndDateAttribute()
+    {
+        return self::formatDate($this->end_date);
+    }
+
+    public function getFormattedReturnDateAttribute()
+    {
+        return $this->return_date ? self::formatDate($this->return_date) : null;
+    }
+
+    public function getStatusInfoAttribute()
+    {
+        switch ($this->status) {
+            case self::BORROWED:
+                return ['class' => 'light', 'text' => __('manage_borrowing.borrowed')];
+            case self::RETURNED:
+                return ['class' => 'success', 'text' => __('manage_borrowing.returned')];
+            case self::LOST:
+                return ['class' => 'danger', 'text' => __('manage_borrowing.lost')];
+            default:
+                return null;
+        }
     }
 }
