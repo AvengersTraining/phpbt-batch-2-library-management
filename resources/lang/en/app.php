@@ -22,4 +22,8 @@ return [
     'invalid_email' => 'The provided credentials do not match our records.',
     'unauthorized' => 'Unauthorized',
     'admin' => 'Admin',
+    'verify_email' => 'Verify Email',
+    'require_verification' => 'Please verify your email first!',
+    'success_verification' => 'Email verified!',
+    'success_send_verification' => 'Verification link sent!',
 ];

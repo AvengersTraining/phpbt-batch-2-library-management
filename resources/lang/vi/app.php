@@ -22,4 +22,8 @@ return [
     'invalid_email' => 'Thông tin đăng nhập không chính xác.',
     'unauthorized' => 'Không có quyền truy cập',
     'admin' => 'Quản lý',
+    'verify_email' => 'Xác minh Email',
+    'require_verification' => 'Vui lòng xác minh email để sử dụng chức năng này!',
+    'success_verification' => 'Xác minh email thành công!',
+    'success_send_verification' => 'Liên kết xác minh đã được gửi vào email của bạn!',
 ];
