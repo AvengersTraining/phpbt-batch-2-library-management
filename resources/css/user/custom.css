@@ -1,0 +1,12 @@
+.float-right {
+    float: right;
+}
+
+.link:visited {
+    color: #ff7236;
+}
+
+.link:hover {
+    color: #fd8d50;
+    text-decoration: underline;
+}
