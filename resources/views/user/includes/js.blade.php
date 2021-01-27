@@ -8,6 +8,7 @@
 <script type=" text/javascript" src="{{ asset('user/js/jquery.easing.1.3.js') }}"></script>
 
 <!-- Bootstrap -->
+<script type=" text/javascript" src="{{ asset('user/js/bootstrap.min.js') }}"></script>
 {{-- <script type=" text/javascript" src="{{ asset('user/js/bootstrap.min.js') }}">
 </script>
 --}}

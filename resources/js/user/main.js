@@ -180,50 +180,50 @@ $(function () {
 
     //Blog Tags (Tooltip)
     //--------------------------------------------------------
-    var tagObj = $('[data-toggle="blog-tags"]');
-    tagObj.tooltip();
+    // var tagObj = $('[data-toggle="blog-tags"]');
+    // tagObj.tooltip();
 
     //Owl Carousel
     //--------------------------------------------------------
-    var owlObj = $('.owl-carousel');
-    owlObj.owlCarousel({
-        loop: false,
-        margin: 30,
-        nav: false,
-        dots: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 2
-            }
-        }
-    });
-
-    var owlEventObj = $('.owl-carousel-event');
-    owlEventObj.owlCarousel({
-        loop: false,
-        margin: 30,
-        nav: false,
-        dots: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            1200: {
-                items: 3
-            }
-        }
-    });
+    // var owlObj = $('.owl-carousel');
+    // owlObj.owlCarousel({
+    //     loop: false,
+    //     margin: 30,
+    //     nav: false,
+    //     dots: true,
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0: {
+    //             items: 1
+    //         },
+    //         600: {
+    //             items: 1
+    //         },
+    //         1000: {
+    //             items: 2
+    //         }
+    //     }
+    // });
+    //
+    // var owlEventObj = $('.owl-carousel-event');
+    // owlEventObj.owlCarousel({
+    //     loop: false,
+    //     margin: 30,
+    //     nav: false,
+    //     dots: true,
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0: {
+    //             items: 1
+    //         },
+    //         768: {
+    //             items: 2
+    //         },
+    //         1200: {
+    //             items: 3
+    //         }
+    //     }
+    // });
 
     //Sidebar Accordion
     //--------------------------------------------------------

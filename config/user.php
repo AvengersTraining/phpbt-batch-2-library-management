@@ -20,4 +20,23 @@ return [
         'verified' => 1,
         'unverified' => 0,
     ],
+
+    'order_status' => [
+        0 => [
+            'text' => 'borrowed',
+            'color' => 'success'
+        ],
+        1 => [
+            'text' => 'returned',
+            'color' => 'default']
+        ,
+        2 => [
+            'text' => 'lost',
+            'color' => 'danger'
+        ],
+        3 => [
+            'text' => 'out_date',
+            'color' => 'warning',
+        ]
+    ]
 ];

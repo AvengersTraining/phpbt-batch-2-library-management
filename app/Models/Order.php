@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +14,7 @@ class Order extends Model
     public const BORROWED = 0;
     public const RETURNED = 1;
     public const LOST = 2;
+    public const OUT_DATE = 3;
 
     public const PAGINATE = 15;
 
@@ -83,5 +85,14 @@ class Order extends Model
             default:
                 return null;
         }
+    }
+
+    public function getOutDateAttribute()
+    {
+        if ($this->end_date < Carbon::now()->format('Y-m-d h:m:s') && $this->status == Order::BORROWED) {
+            return true;
+        }
+
+        return false;
     }
 }

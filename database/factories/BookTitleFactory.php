@@ -25,7 +25,7 @@ class BookTitleFactory extends Factory
             'name' => $this->faker->text(30),
             'author' => $this->faker->name,
             'description' => $this->faker->text,
-            'thumbnail' => 'placeholder.webp',
+            'thumbnail' => $this->faker->image('public/storage/images',640,480, null, false),
             'released_date' => $this->faker->dateTime(),
         ];
     }
