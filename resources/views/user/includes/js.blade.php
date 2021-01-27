@@ -11,8 +11,8 @@
 {{-- <script type=" text/javascript" src="{{ asset('user/js/bootstrap.min.js') }}">
 </script>
 --}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="{{ asset('js/admin/jquery.min.js') }}"></script>
+<script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
 <!-- Mobile Menu -->
 <script type=" text/javascript" src="{{ asset('user/js/mmenu.min.js') }}"></script>
 

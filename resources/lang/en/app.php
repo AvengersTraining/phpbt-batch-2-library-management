@@ -26,4 +26,11 @@ return [
     'require_verification' => 'Please verify your email first!',
     'success_verification' => 'Email verified!',
     'success_send_verification' => 'Verification link sent!',
+    'forget_password' => 'Forgot your password?',
+    'reset' => 'Reset',
+    'reset_password' => 'Reset my password',
+    'reset_password_for' => 'Reset password for',
+    'send' => 'Send',
+    'new_password' => 'New password',
+    'confirm_password' => 'Confirm your new password',
 ];

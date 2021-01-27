@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookTitleController;
@@ -8,6 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EmailController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,7 +69,9 @@ Route::prefix('account')->middleware(['auth', 'verified'])->group(function () {
     Route::get('profile', function () {
         return view('user.pages.account.profile');
     })->name('user.profile');
-    Route::get('password', function () {
-        return view('user.pages.account.password');
-    });
 });
+
+Route::get('password/reset', [ForgotPasswordController::class, 'showEmailForm'])->name('password.forgot');
+Route::post('password/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.send');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');

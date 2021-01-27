@@ -5,18 +5,14 @@
 @endsection
 
 @section('css')
-    <!-- Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
     <!-- Mobile Menu -->
-    <link href="css/mmenu.css" rel="stylesheet" type="text/css" />
-    <link href="css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('user/css/mmenu.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('user/css/mmenu.positioning.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Stylesheet -->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('user/css/custom.css') }}" />
     <link href="{{ asset('user/css/style.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('user/css/font-awesome.min.css') }}" />
 @endsection
 
 @section('content')
@@ -37,24 +33,21 @@
                                                     <div id="customer_details">
                                                         <div class="col-xs-12">
                                                             <div class="woocommerce-billing-fields">
-                                                                <h2>Login</h2>
+                                                                <h2>{{ __('app.login') }}</h2>
                                                                 <span class="underline left"></span>
                                                                 <div class="row">
                                                                     <div class="billing-address-box">
                                                                         <div class="col-xs-12 col-sm-12">
-                                                                            <label for="">Email</label>
+                                                                            <label for="">{{ __('app.email') }}</label>
                                                                             <p id="billing_company_field"
                                                                                class="form-row form-row form-row-wide">
                                                                                 <input type="email" class="@error('email') is-invalid @enderror"
                                                                                        placeholder="{{ __('app.email') }}" id="email"
                                                                                        name="email" class="input-text">
-                                                                            @error('email')
-                                                                            <div class="alert alert-danger">{{ $message }}</div>
-                                                                            @enderror
                                                                             </p>
                                                                         </div>
                                                                         <div class="col-xs-12 col-sm-12">
-                                                                            <label for="">Password</label>
+                                                                            <label for="">{{ __('app.password') }}</label>
                                                                             <p id="billing_company_field"
                                                                                class="form-row form-row form-row-wide">
                                                                                 <input type="password" placeholder="{{ __('app.password') }}" id="password" name="password"
@@ -63,11 +56,17 @@
                                                                         </div>
 
                                                                         <div class="col-xs-12 col-sm-12">
-                                                                            <input type="checkbox" id="remember_me"
-                                                                                   name="remember_me" class="input-text">
+                                                                            <span class="d-inline-block">
+                                                                                <input type="checkbox" id="remember_me"
+                                                                                       name="remember_me" class="input-text">
 
-                                                                            <label for="">{{ __('app.remember_me') }}</label>
+                                                                                <label for="">{{ __('app.remember_me') }}</label>
+                                                                            </span>
+                                                                            <span class="float-right">
+                                                                                <a href="{{ route('password.forgot') }}" class="link">{{ __('app.forget_password') }}</a>
+                                                                            </span>
                                                                         </div>
+
                                                                         <div class="clear"></div>
 
                                                                         <div class="col-xs-12 col-sm-12">

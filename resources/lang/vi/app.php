@@ -26,4 +26,11 @@ return [
     'require_verification' => 'Vui lòng xác minh email để sử dụng chức năng này!',
     'success_verification' => 'Xác minh email thành công!',
     'success_send_verification' => 'Liên kết xác minh đã được gửi vào email của bạn!',
+    'forget_password' => 'Quên mật khẩu?',
+    'reset' => 'Đặt lại',
+    'reset_password' => 'Đặt lại mật khẩu',
+    'reset_password_for' => 'Đặt lại mật khẩu cho',
+    'send' => 'Gửi email',
+    'new_password' => 'Mật khẩu mới',
+    'confirm_password' => 'Nhập lại mật khẩu mới',
 ];
