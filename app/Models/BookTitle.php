@@ -55,4 +55,11 @@ class BookTitle extends Model
     {
         return asset(Storage::url($this->thumbnail));
     }
+
+    public function getOrdersCountAttribute()
+    {
+        return $this->books->reduce(function ($acc, $item) {
+            return $item->orders->count() + $acc;
+        }, 0);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookTitleController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
@@ -44,9 +45,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 // temp routes for users
-Route::get('/', function () {
-    return view('user.pages.home');
-})->name('home');
+Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('book-detail', function () {
     return view('user.pages.book_detail');
 });
