@@ -1,12 +1,18 @@
 <?php
 
 return [
+    'id' => 'ID',
     'history' => 'Borrow history',
     'borrow' => 'Borrow book',
     'return' => 'Return book',
     'user' => 'User',
     'book' => 'Book',
-    'return_date' => 'Return date',
+    'status' => 'Status',
+    'start_date' => 'Date borrowed',
+    'end_date' => 'Due Date',
+    'return_date' => 'Date returned',
+    'created_by_admin_id' => 'Borrow form approved by',
+    'returned_by_admin_id' => 'Return form approved by',
     'borrow_success' => 'Borrow success!',
     'not_found' => 'Not found',
     'banned_user' => 'This user is banned!',
@@ -23,4 +29,12 @@ return [
     'user_required' => 'No user orders book!',
     'date_required' => 'Return date must be required!',
     'date_after_today' => 'Return date must be after today!',
+    'keyword' => 'Keyword',
+    'borrowed' => 'Borrowed',
+    'returned' => 'Returned',
+    'lost' => 'Lost',
+    'all_status' => 'All status',
+    'reset' => 'Reset',
+    'msg_found' => ' results found',
+    'msg_not_found' => 'No results found',
 ];

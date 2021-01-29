@@ -34,3 +34,10 @@
     @endforeach
 </div>
 @endif
+
+@if(isset($customMessage))
+    <div class="alert alert-{{ $customMessage['type'] }}">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+            <div>{{ $customMessage['content'] }}</div>
+    </div>
+@endif
