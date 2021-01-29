@@ -102,9 +102,13 @@
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/">{{ __('app.home') }}</a>
                                 </li>
                                 @auth
-                                    <li class="dropdown {{ request()->is('account/*') ? 'active' : '' }}">
+                                    <li class="dropdown {{ request()->is('account/profile') ? 'active' : '' }}">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled"
-                                           href="{{ route('user.profile') }}">{{ __('app.account') }}</a>
+                                           href="{{ route('user.profile') }}">{{ __('app.profile') }}</a>
+                                    </li>
+                                    <li class="dropdown {{ request()->is('account/orders/history') ? 'active' : '' }}">
+                                        <a data-toggle="dropdown" class="dropdown-toggle disabled"
+                                           href="{{ route('orders.history') }}">{{ __('app.history') }}</a>
                                     </li>
                                     @if (! Auth::user()->email_verified_at)
                                         <li>

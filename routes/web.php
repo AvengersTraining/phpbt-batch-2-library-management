@@ -66,6 +66,11 @@ Route::prefix('account')->middleware(['auth', 'verified'])->group(function () {
     Route::get('history', function () {
         return view('user.pages.account.history');
     });
+});
+
+Route::prefix('account')->middleware('auth')->group(function () {
+    Route::get('orders/history', [OrderController::class, 'showHistory'])
+        ->middleware('verified')->name('orders.history');
     Route::get('profile', function () {
         return view('user.pages.account.profile');
     })->name('user.profile');

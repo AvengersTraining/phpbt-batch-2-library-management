@@ -28,7 +28,7 @@
                 </li>
 
                 <li class="nav-header">{{ __('app.list_function') }}</li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/genres*') ? 'menu-open' : '' }}">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-book-reader"></i>
                         <p>{{ __('app.manage_genre') }}</p>
@@ -36,20 +36,20 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.genres.index') }}" class="nav-link">
+                            <a href="{{ route('admin.genres.index') }}" class="nav-link {{ request()->is('admin/genres') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('genres.list_all') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.genres.create') }}" class="nav-link">
+                            <a href="{{ route('admin.genres.create') }}" class="nav-link {{ request()->is('admin/genres/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('genres.add') }}</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/book_titles*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>{{ __('app.manage_title') }}</p>
@@ -57,35 +57,35 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.book_titles.index') }}" class="nav-link">
+                            <a href="{{ route('admin.book_titles.index') }}" class="nav-link {{ request()->is('admin/book_titles') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('book_titles.list_all') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.book_titles.create') }}" class="nav-link">
+                            <a href="{{ route('admin.book_titles.create') }}" class="nav-link {{ request()->is('admin/book_titles/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('book_titles.add') }}</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/books*') ? 'menu-open' : '' }}">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-book-open"></i>
                         <p>{{ __('app.manage_book') }}</p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
                     <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{{ route('admin.books.index') }}" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>{{ __('manage_book.list') }}</p>
-                        </a>
-                      </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.books.index') }}" class="nav-link {{ request()->is('admin/books') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('manage_book.list') }}</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/users*') ? 'menu-open' : '' }}">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-head-side-mask"></i>
                         <p>{{ __('app.manage_user') }}</p>
@@ -93,20 +93,20 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.users.index') }}" class="nav-link">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('manage_user.list') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.users.create') }}" class="nav-link">
+                            <a href="{{ route('admin.users.create') }}" class="nav-link {{ request()->is('admin/users/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('manage_user.add') }}</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('admin/orders*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-history"></i>
                         <p>{{ __('app.manage_borrowing') }}</p>
@@ -114,19 +114,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.orders.index') }}" class="nav-link">
+                            <a href="{{ route('admin.orders.index') }}" class="nav-link {{ request()->is('admin/orders') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('manage_borrowing.history') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.orders.create') }}" class="nav-link">
+                            <a href="{{ route('admin.orders.create') }}" class="nav-link {{ request()->is('admin/orders/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('manage_borrowing.borrow') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.orders.return') }}" class="nav-link">
+                            <a href="{{ route('admin.orders.return') }}" class="nav-link {{ request()->is('admin/orders/return') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('manage_borrowing.return') }}</p>
                             </a>

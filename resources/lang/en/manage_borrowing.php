@@ -37,4 +37,8 @@ return [
     'reset' => 'Reset',
     'msg_found' => ' results found',
     'msg_not_found' => 'No results found',
+    'all' => 'All',
+    'out_date' => 'Out of date',
+    'title_author' => 'Title/Author',
+    'fines' => 'Fines',
 ];

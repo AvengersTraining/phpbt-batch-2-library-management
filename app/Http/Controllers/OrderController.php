@@ -14,6 +14,7 @@ use App\Models\Order;
 use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -185,5 +186,44 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showHistory(Request $request)
+    {
+        $filter = Order::query();
+        $filter->where('user_id', Auth::id());
+
+        if ($request->get('text')) {
+            $filter->leftJoin('books', 'user_book.book_id', '=', 'books.id')
+                ->leftJoin('book_titles', 'books.book_title_id', '=', 'book_titles.id')
+                ->where('book_titles.name', 'like', '%' . $request->get('text') . '%')
+                ->orWhere('book_titles.author', 'like', '%' . $request->get('text') . '%');
+        }
+        if (! in_array($request->get('status'), ['*', null])) {
+            if ($request->get('status') == Order::OUT_DATE) {
+                $filter->where('status', Order::BORROWED)
+                    ->where('end_date', '<', Carbon::now()->format('Y-m-d h:m:s'));
+            } else {
+                $filter->where('status', $request->get('status'));
+            }
+        }
+        if ($request->get('start_date')) {
+            $date = date('Y-m-d', strtotime($request->get('start_date')));
+            $filter->where('start_date', 'like' , $date . '%');
+        }
+        if ($request->get('end_date')) {
+            $date = date('Y-m-d', strtotime($request->get('end_date')));
+            $filter->where('end_date', 'like' , $date . '%');
+        }
+        if ($request->get('return_date')) {
+            $date = date('Y-m-d', strtotime($request->get('return_date')));
+            $filter->where('return_date', 'like' , $date . '%');
+        }
+
+        $orders = $filter->orderBy('status')
+            ->with('book.bookTitle')
+            ->paginate(Order::PAGINATE);
+
+        return view('user.pages.account.history', ['orders' => $orders]);
     }
 }

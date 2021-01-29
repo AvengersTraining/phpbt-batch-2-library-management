@@ -37,4 +37,8 @@ return [
     'reset' => 'Đặt lại',
     'msg_found' => ' results found',
     'msg_not_found' => 'No results found',
+    'all' => 'Tất cả',
+    'out_date' => 'Quá hạn',
+    'title_author' => 'Tên sách/Tác giả',
+    'fines' => 'Tiền phạt',
 ];

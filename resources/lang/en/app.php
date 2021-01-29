@@ -33,4 +33,6 @@ return [
     'send' => 'Send',
     'new_password' => 'New password',
     'confirm_password' => 'Confirm your new password',
+    'profile' => 'Profile',
+    'history' => 'Borrow History',
 ];
